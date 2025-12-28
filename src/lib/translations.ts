@@ -119,6 +119,17 @@ export const translations = {
         distance: "लक्ष्य से दूरी",
         victims: "लोग फंसे हुए हैं"
       }
+    },
+    footer: {
+      platform: "प्लेटफार्म",
+      regions: "क्षेत्र",
+      resources: "संसाधन",
+      links: {
+        documentation: "दस्तावेज़",
+        apiAccess: "API एक्सेस",
+        ksdmaPortal: "KSDMA पोर्टल",
+        emergencyContacts: "आपातकालीन संपर्क"
+      }
     }
   },
   ml: {
