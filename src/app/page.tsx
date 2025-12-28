@@ -383,6 +383,7 @@ export default function Home() {
         </AnimatePresence>
 
         <AssetGrid />
+        <InstructionsPanel />
         <KSDMADashboard />
         <AIAssistant />
 
