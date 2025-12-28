@@ -159,7 +159,87 @@ export default function Home() {
           onGetStarted={() => setIsPortalOpen(true)}
           onViewMap={() => scrollToSection(null, "map")}
         />
-        <InteractiveMap />
+        <InteractiveMap onLandslideTrigger={setIsLandslideTriggered} />
+
+        <AnimatePresence>
+          {isLandslideTriggered && (
+            <motion.section 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+              className="py-12 bg-secondary/10 relative overflow-hidden"
+            >
+              <div className="container mx-auto px-4 relative z-10">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-8 glass-card p-8 rounded-[2.5rem] border-primary/20 shadow-[0_0_50px_rgba(var(--primary),0.1)]">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+                        <Users className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold italic tracking-tight">Active Response Units</h3>
+                        <p className="text-foreground/60 text-sm font-mono">Real-time Volunteer Deployment Status</p>
+                      </div>
+                    </div>
+                    <p className="text-foreground/60 max-w-xl mb-6 leading-relaxed">
+                      Landslide detected in <span className="text-red-400 font-bold">Meppadi-Chooralmala</span> sector. 
+                      Volunteers are categorized into specialized strike teams. Access the mobile interface to receive direct assignments.
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                      <motion.button
+                        onClick={() => setShowVolunteerInfo(!showVolunteerInfo)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-bold flex items-center gap-2 hover:bg-white/10 transition-all"
+                      >
+                        {showVolunteerInfo ? "Hide Deployment Zones" : "View Deployment Zones"}
+                        <Zap className={`w-4 h-4 ${showVolunteerInfo ? "rotate-180" : ""} transition-transform`} />
+                      </motion.button>
+                      <motion.button
+                        onClick={() => setIsVolunteerViewOpen(true)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-8 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-black flex items-center gap-3 shadow-lg shadow-primary/20 animate-bounce"
+                      >
+                        <Briefcase className="w-5 h-5" />
+                        DEMO VOLUNTEER MOBILE APP
+                      </motion.button>
+                    </div>
+                  </div>
+
+                  <AnimatePresence>
+                    {showVolunteerInfo && (
+                      <motion.div 
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4"
+                      >
+                        {[
+                          { zone: "Zone A", area: "Chooralmala", task: "Rescue", gear: "Drones, Excavators", color: "red" },
+                          { zone: "Zone B", area: "Mundakkai", task: "Medical", gear: "Trauma Kits, OT Units", color: "orange" },
+                          { zone: "Zone C", area: "Meppadi", task: "Relief", gear: "Logistics, Ham Radio", color: "blue" },
+                          { zone: "Zone D", area: "Kalpetta", task: "Base Ops", gear: "Satellite Comms", color: "green" }
+                        ].map((item) => (
+                          <div key={item.zone} className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                            <div className="flex items-center justify-between mb-2">
+                              <span className="text-[10px] font-black uppercase tracking-widest text-foreground/40">{item.zone}</span>
+                              <div className={`w-2 h-2 rounded-full bg-${item.color}-500`} />
+                            </div>
+                            <h4 className="font-bold text-sm mb-1">{item.area}</h4>
+                            <p className="text-[10px] text-primary font-mono uppercase mb-1">{item.task} Team</p>
+                            <p className="text-[10px] text-foreground/40 italic">Gear: {item.gear}</p>
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            </motion.section>
+          )}
+        </AnimatePresence>
+
         <AssetGrid />
         <KSDMADashboard />
         <AIAssistant />
