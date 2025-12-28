@@ -7,24 +7,27 @@ import {
   CreditCard, Award, QrCode, Loader2,
   X, Briefcase, Fingerprint, Search,
   ArrowRight, ShieldCheck, MapPin,
-  Calendar, Check, Download, Share2
+  Calendar, Check, Download, Share2, AlertCircle
 } from "lucide-react";
+import registryData from "../../lib/data/verified_registry.json";
 
 const SKILL_CATEGORIES = [
-  { id: "drone", label: "Drone Operator", icon: "🛸" },
-  { id: "medical", label: "Trauma Surgeon", icon: "🏥" },
-  { id: "machinery", label: "JCB/Excavator Operator", icon: "🚜" },
-  { id: "ham", label: "Ham Radio", icon: "📡" },
+  { id: "drone", label: "Drone Operator", icon: "🛸", org: "DGCA" },
+  { id: "medical", label: "Trauma Surgeon", icon: "🏥", org: "IMA" },
+  { id: "machinery", label: "JCB/Excavator Operator", icon: "🚜", org: "RTO" },
+  { id: "ham", label: "Ham Radio", icon: "📡", org: "KSDMA" },
+  { id: "unskilled", label: "Kudumbashree Volunteer", icon: "👩", org: "Kudumbashree" },
 ];
 
 export function VerificationPortal({ isOpen, onClose }) {
-  const [step, setStep] = useState("form"); // form, connecting, validating, success
+  const [step, setStep] = useState("form"); // form, connecting, validating, success, error
   const [formData, setFormData] = useState({
     fullName: "",
     mobile: "",
     skill: "drone",
     idNumber: ""
   });
+  const [verifiedUser, setVerifiedUser] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -33,17 +36,28 @@ export function VerificationPortal({ isOpen, onClose }) {
 
   const startVerification = (e) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.mobile || !formData.idNumber) return;
+    if (!formData.fullName || !formData.idNumber) return;
     
     setStep("connecting");
     
+    // Simulate lookup in our registry
     setTimeout(() => {
       setStep("validating");
-    }, 2000);
+      
+      const found = registryData.find(u => 
+        u.id.toLowerCase() === formData.idNumber.toLowerCase() ||
+        u.name.toLowerCase().includes(formData.fullName.toLowerCase())
+      );
 
-    setTimeout(() => {
-      setStep("success");
-    }, 3000);
+      setTimeout(() => {
+        if (found) {
+          setVerifiedUser(found);
+          setStep("success");
+        } else {
+          setStep("error");
+        }
+      }, 2000);
+    }, 1500);
   };
 
   if (!isOpen) return null;
