@@ -8,7 +8,6 @@ import {
   Crosshair, Layers, TriangleAlert
 } from "lucide-react";
 import dynamic from "next/dynamic";
-import { useMap } from "react-leaflet";
 
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
@@ -35,11 +34,6 @@ const Polyline = dynamic(
   { ssr: false }
 );
 
-const Pane = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Pane),
-  { ssr: false }
-);
-
 const WAYANAD_CENTER: [number, number] = [11.6854, 76.1320];
 
 interface Asset {
@@ -60,8 +54,8 @@ const ASSETS: Asset[] = [
   { id: 4, type: "excavator", name: "Anand JCB Services", location: [11.6750, 76.1200], task: "Debris Clearance", status: "standby", eta: "15 min", verified: true },
   { id: 5, type: "ham", name: "VU2ABC - Ham Operator", location: [11.6830, 76.1350], task: "Emergency Comms", status: "standby", verified: true },
   { id: 6, type: "medical", name: "Leela - Army Nurse (Retd)", location: [11.6870, 76.1280], task: "First Aid Station", status: "standby", verified: true },
-    { id: 7, type: "ham", name: "VU2NRO - Nilambur Ham Radio", location: [11.2750, 76.2250], task: "Analog Backup Comms", status: "standby", verified: true },
-    { id: 8, type: "medical", name: "Meppadi Kudumbashree Unit", location: [11.5580, 76.1280], task: "Community Kitchen & Logistics", status: "standby", verified: true },
+  { id: 7, type: "ham", name: "VU2NRO - Nilambur Ham Radio", location: [11.2750, 76.2250], task: "Analog Backup Comms", status: "standby", verified: true },
+  { id: 8, type: "medical", name: "Meppadi Kudumbashree Unit", location: [11.5580, 76.1280], task: "Community Kitchen & Logistics", status: "standby", verified: true },
 ];
 
 const RISK_ZONES = [
@@ -162,17 +156,17 @@ export function InteractiveMap() {
       }, 100);
 
       const timer1 = setTimeout(() => {
-        setActiveAssets([1, 5]);
-        setDeployedCount(2);
+        setActiveAssets([1, 5, 8]); // Added Kudumbashree unit early
+        setDeployedCount(3);
       }, 1200);
       const timer2 = setTimeout(() => {
-        setActiveAssets([1, 5, 2, 6]);
-        setDeployedCount(4);
+        setActiveAssets([1, 5, 8, 2, 6, 7]); // Added Ham Radio VU2NRO
+        setDeployedCount(6);
         setNetworkStatus("mesh");
       }, 2400);
       const timer3 = setTimeout(() => {
-        setActiveAssets([1, 2, 3, 4, 5, 6]);
-        setDeployedCount(6);
+        setActiveAssets([1, 2, 3, 4, 5, 6, 7, 8]);
+        setDeployedCount(8);
       }, 3600);
       
       return () => {
@@ -274,7 +268,7 @@ export function InteractiveMap() {
                 {mapLoaded && typeof window !== "undefined" && (
                   <MapContainer
                     center={WAYANAD_CENTER}
-                    zoom={14}
+                    zoom={12}
                     style={{ height: "100%", width: "100%" }}
                     zoomControl={false}
                     attributionControl={false}
