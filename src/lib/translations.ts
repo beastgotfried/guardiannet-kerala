@@ -1,4 +1,3 @@
-
 export type Language = 'en' | 'hi' | 'ml';
 
 export const translations = {
