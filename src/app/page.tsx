@@ -3,6 +3,7 @@
 import { Hero } from "@/components/guardian/Hero";
 import { InteractiveMap } from "@/components/guardian/InteractiveMap";
 import { AssetGrid } from "@/components/guardian/AssetGrid";
+import { InstructionsPanel } from "@/components/guardian/InstructionsPanel";
 import { KSDMADashboard } from "@/components/guardian/KSDMADashboard";
 import { AIAssistant } from "@/components/guardian/AIAssistant";
 import { VerificationPortal } from "@/components/guardian/VerificationPortal";
