@@ -193,6 +193,8 @@ export const translations = {
       platform: "പ്ലാറ്റ്‌ഫോം",
       regions: "മേഖലകൾ",
       resources: "വിഭവങ്ങൾ",
+      platformItems: ["അസറ്റ് മാപ്പിംഗ്", "മെഷ് നെറ്റ്‌വർക്കിംഗ്", "നൈപുണ്യ പരിശോധന", "ക്യാമ്പ് മാനേജ്‌മെന്റ്"],
+      regionItems: ["വയനാട്", "ഇടുക്കി", "പാലക്കാട്", "കോഴിക്കോട്", "മലപ്പുറം"],
       links: {
         documentation: "ഡോക്യുമെന്റേഷൻ",
         apiAccess: "API ആക്സസ്",
