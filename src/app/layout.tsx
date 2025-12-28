@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   description: "Hyper-Local Resilience for the Western Ghats",
 };
 
+import { LanguageProvider } from "@/hooks/use-language";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -40,7 +42,9 @@ export default function RootLayout({
           data-debug="true"
           data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
         />
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         <VisualEditsMessenger />
       </body>
     </html>
