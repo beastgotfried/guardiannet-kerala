@@ -510,15 +510,20 @@ export default function Home() {
                           e.preventDefault();
                           handleExternalLink("https://timesofindia.indiatimes.com/topic/wayanad-floods");
                         }}
-                        className="hover:text-primary transition-colors text-left block"
+                        className="hover:text-primary transition-colors text-left block flex items-center gap-2"
                       >
                         {t.footer.links.documentation}
+                        <ExternalLink className="w-3 h-3" />
                       </a>
                     </li>
                     <li>
-                      <button className="hover:text-primary transition-colors text-left">
+                      <a 
+                        href="#"
+                        onClick={(e) => e.preventDefault()}
+                        className="hover:text-primary transition-colors text-left block flex items-center gap-2 cursor-not-allowed opacity-50"
+                      >
                         {t.footer.links.apiAccess}
-                      </button>
+                      </a>
                     </li>
                     <li>
                       <a 
@@ -529,9 +534,10 @@ export default function Home() {
                           e.preventDefault();
                           handleExternalLink("https://sdma.kerala.gov.in/");
                         }}
-                        className="hover:text-primary transition-colors text-left block"
+                        className="hover:text-primary transition-colors text-left block flex items-center gap-2"
                       >
                         {t.footer.links.ksdmaPortal}
+                        <ExternalLink className="w-3 h-3" />
                       </a>
                     </li>
                     <li>
@@ -543,9 +549,10 @@ export default function Home() {
                           e.preventDefault();
                           handleExternalLink("https://sdma.kerala.gov.in/emergency-contacts/");
                         }}
-                        className="hover:text-primary transition-colors text-left block"
+                        className="hover:text-primary transition-colors text-left block flex items-center gap-2"
                       >
                         {t.footer.links.emergencyContacts}
+                        <ExternalLink className="w-3 h-3" />
                       </a>
                     </li>
                   </ul>
