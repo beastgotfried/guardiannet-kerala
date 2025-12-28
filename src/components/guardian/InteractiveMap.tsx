@@ -79,74 +79,60 @@ function AssetMarkers({
   setSelectedAsset: (asset: Asset) => void,
   getAssetIcon: (type: string) => string
 }) {
-  const map = useMap();
-  const [_, setTick] = useState(0);
+  const [L, setL] = useState<any>(null);
 
   useEffect(() => {
-    const update = () => setTick(t => t + 1);
-    map.on("move zoom viewreset", update);
-    return () => map.off("move zoom viewreset", update);
-  }, [map]);
+    import("leaflet").then((leaflet) => {
+      setL(leaflet.default);
+    });
+  }, []);
+
+  if (!L) return null;
 
   return (
-    <div className="absolute inset-0 z-[1000] pointer-events-none overflow-hidden">
-      <AnimatePresence>
-        {assets.map((asset) => {
-          const isActive = activeAssets.includes(asset.id);
-          const point = map.latLngToContainerPoint(asset.location);
-          
-          return (
-            <motion.div
-              key={asset.id}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ 
-                scale: isActive ? 1 : 0.7, 
-                opacity: isActive ? 1 : 0.4,
-              }}
-              style={{
-                position: "absolute",
-                left: point.x,
-                top: point.y,
-                transform: "translate(-50%, -50%)",
-                pointerEvents: "auto"
-              }}
-              className="cursor-pointer"
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedAsset(asset);
-              }}
-            >
-              <div className={`relative p-3 rounded-xl transition-all ${
+    <>
+      {assets.map((asset) => {
+        const isActive = activeAssets.includes(asset.id);
+        
+        const icon = L.divIcon({
+          className: 'custom-div-icon',
+          html: `
+            <div class="relative cursor-pointer group">
+              <div class="p-3 rounded-xl transition-all ${
                 isActive 
-                  ? "bg-primary/90 text-primary-foreground shadow-lg shadow-primary/30" 
-                  : "bg-white/20 text-white/60"
-              }`}>
-                <span className="text-lg">{getAssetIcon(asset.type)}</span>
-                {isActive && (
-                  <motion.div
-                    initial={{ scale: 1 }}
-                    animate={{ scale: [1, 1.5, 1] }}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    className="absolute inset-0 rounded-xl border-2 border-primary"
-                  />
-                )}
+                  ? "bg-[#22c55e] text-white shadow-lg shadow-green-500/30 scale-110" 
+                  : "bg-white/20 text-white/60 scale-90"
+              }">
+                <span class="text-lg">${getAssetIcon(asset.type)}</span>
+                ${isActive ? `
+                  <div class="absolute inset-0 rounded-xl border-2 border-[#22c55e] animate-ping opacity-20"></div>
+                ` : ''}
               </div>
-              {isActive && (
-                <motion.div
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="absolute top-full mt-1 left-1/2 -translate-x-1/2 whitespace-nowrap"
-                >
-                  <span className="px-2 py-1 rounded-md bg-black/80 text-[10px] font-bold text-white">
-                    {asset.name.split(" - ")[0]}
+              ${isActive ? `
+                <div class="absolute top-full mt-1 left-1/2 -translate-x-1/2 whitespace-nowrap z-[1001]">
+                  <span class="px-2 py-1 rounded-md bg-black/80 text-[10px] font-bold text-white shadow-lg">
+                    ${asset.name.split(" - ")[0]}
                   </span>
-                </motion.div>
-              )}
-            </motion.div>
-          );
-        })}
-      </AnimatePresence>
-    </div>
+                </div>
+              ` : ''}
+            </div>
+          `,
+          iconSize: [40, 40],
+          iconAnchor: [20, 20]
+        });
+
+        return (
+          <Marker
+            key={asset.id}
+            position={asset.location}
+            icon={icon}
+            eventHandlers={{
+              click: () => setSelectedAsset(asset),
+            }}
+          />
+        );
+      })}
+    </>
   );
 }
 
