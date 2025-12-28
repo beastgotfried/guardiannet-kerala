@@ -134,10 +134,16 @@ function AssetMarkers({
 
 export function InteractiveMap({ onLandslideTrigger }: { onLandslideTrigger?: (isTriggered: boolean) => void }) {
   const [isTriggered, setIsTriggered] = useState(false);
+  const [is3D, setIs3D] = useState(false);
+  const [mapType, setMapType] = useState<"dark" | "topo">("dark");
 
   useEffect(() => {
     if (onLandslideTrigger) {
       onLandslideTrigger(isTriggered);
+    }
+    // Auto-enable 3D when triggered for dramatic effect
+    if (isTriggered) {
+      setIs3D(true);
     }
   }, [isTriggered, onLandslideTrigger]);
   const [activeAssets, setActiveAssets] = useState<number[]>([]);
