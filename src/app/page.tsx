@@ -6,15 +6,18 @@ import { AssetGrid } from "@/components/guardian/AssetGrid";
 import { KSDMADashboard } from "@/components/guardian/KSDMADashboard";
 import { AIAssistant } from "@/components/guardian/AIAssistant";
 import { VerificationPortal } from "@/components/guardian/VerificationPortal";
-import { Shield, Menu, Github, ExternalLink, X } from "lucide-react";
+import { VolunteerView } from "@/components/guardian/VolunteerView";
+import { Shield, Menu, Github, ExternalLink, X, Users, Briefcase, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import Head from "next/head";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isPortalOpen, setIsPortalOpen] = useState(false);
+  const [isLandslideTriggered, setIsLandslideTriggered] = useState(false);
+  const [isVolunteerViewOpen, setIsVolunteerViewOpen] = useState(false);
+  const [showVolunteerInfo, setShowVolunteerInfo] = useState(false);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement> | null, id: string) => {
     if (e) e.preventDefault();
