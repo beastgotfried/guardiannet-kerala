@@ -60,6 +60,8 @@ const ASSETS: Asset[] = [
   { id: 4, type: "excavator", name: "Anand JCB Services", location: [11.6750, 76.1200], task: "Debris Clearance", status: "standby", eta: "15 min", verified: true },
   { id: 5, type: "ham", name: "VU2ABC - Ham Operator", location: [11.6830, 76.1350], task: "Emergency Comms", status: "standby", verified: true },
   { id: 6, type: "medical", name: "Leela - Army Nurse (Retd)", location: [11.6870, 76.1280], task: "First Aid Station", status: "standby", verified: true },
+  { id: 7, type: "ham", name: "VU2NRO - Nilambur Ham Radio", location: [11.2750, 76.2250], task: "Mesh Backbone", status: "standby", verified: true },
+  { id: 8, type: "medical", name: "Meppadi Kudumbashree Unit", location: [11.5580, 76.1280], task: "Community Relief", status: "standby", verified: true },
 ];
 
 const RISK_ZONES = [
