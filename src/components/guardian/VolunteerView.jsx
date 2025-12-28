@@ -6,8 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Shield, MapPin, Radio, Battery, AlertTriangle, Navigation, CheckCircle2, Info, Activity, X, LogOut } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
 
-export const VolunteerView = ({ onClose }) => {
-  const { language, t } = useLanguage();
+export const VolunteerView = ({ onClose, t, language }) => {
   const [status, setStatus] = useState("standby"); // standby, alerting, mission, accepted
   const [battery, setBattery] = useState(88);
   const [missionData, setMissionData] = useState({
