@@ -117,13 +117,24 @@ export default function Home() {
                 className="md:hidden bg-background/95 backdrop-blur-xl border-t border-white/5"
               >
                 <div className="container mx-auto px-4 py-6 space-y-2">
-                  {["Technology", "Kerala Context", "KSDMA", "About"].map((item) => (
+                  {[
+                    { name: "Technology", id: "technology" },
+                    { name: "KSDMA", id: "ksdma" },
+                    { name: "Kerala Context", id: "#" },
+                    { name: "About", id: "#" }
+                  ].map((item) => (
                     <a 
-                      key={item}
-                      href="#" 
+                      key={item.name}
+                      href={`#${item.id}`} 
+                      onClick={(e) => {
+                        if (item.id !== "#") {
+                          scrollToSection(e, item.id);
+                          setMobileMenuOpen(false);
+                        }
+                      }}
                       className="block px-4 py-3 rounded-xl text-sm font-medium text-foreground/60 hover:text-foreground hover:bg-white/5 transition-all"
                     >
-                      {item}
+                      {item.name}
                     </a>
                   ))}
                   <button 
