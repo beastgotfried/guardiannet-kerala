@@ -128,7 +128,7 @@ export function KSDMADashboard() {
   };
 
   return (
-    <section ref={containerRef} className="py-32 relative overflow-hidden bg-gradient-to-b from-background via-secondary/20 to-background">
+    <section id="ksdma" ref={containerRef} className="py-32 relative overflow-hidden bg-gradient-to-b from-background via-secondary/20 to-background">
       <div className="container px-4 mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <motion.div 
