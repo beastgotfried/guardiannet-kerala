@@ -248,19 +248,19 @@ export default function Home() {
                         onClick={() => setShowVolunteerInfo(!showVolunteerInfo)}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-bold flex items-center gap-2 hover:bg-white/10 transition-all"
+                        className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-bold flex items-center gap-2 hover:bg-white/10 transition-all shadow-xl"
                       >
-                        {showVolunteerInfo ? "Hide Deployment Zones" : "View Deployment Zones"}
-                        <Zap className={`w-4 h-4 ${showVolunteerInfo ? "rotate-180" : ""} transition-transform`} />
+                        {showVolunteerInfo ? "Hide Tactical Briefing" : "View Tactical Briefing"}
+                        <Zap className={`w-4 h-4 ${showVolunteerInfo ? "rotate-180" : ""} transition-transform text-primary`} />
                       </motion.button>
                       <motion.button
                         onClick={() => setIsVolunteerViewOpen(true)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-8 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-black flex items-center gap-3 shadow-lg shadow-primary/20 animate-bounce"
+                        className="px-8 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-black flex items-center gap-3 shadow-lg shadow-primary/20"
                       >
                         <Briefcase className="w-5 h-5" />
-                        DEMO VOLUNTEER MOBILE APP
+                        OPEN VOLUNTEER INTERFACE
                       </motion.button>
                     </div>
                   </div>
@@ -271,23 +271,55 @@ export default function Home() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}
-                        className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4"
+                        className="flex-[1.5] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
                       >
-                        {[
-                          { zone: "Zone A", area: "Chooralmala", task: "Rescue", gear: "Drones, Excavators", color: "red" },
-                          { zone: "Zone B", area: "Mundakkai", task: "Medical", gear: "Trauma Kits, OT Units", color: "orange" },
-                          { zone: "Zone C", area: "Meppadi", task: "Relief", gear: "Logistics, Ham Radio", color: "blue" },
-                          { zone: "Zone D", area: "Kalpetta", task: "Base Ops", gear: "Satellite Comms", color: "green" }
-                        ].map((item) => (
-                          <div key={item.zone} className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                            <div className="flex items-center justify-between mb-2">
-                              <span className="text-[10px] font-black uppercase tracking-widest text-foreground/40">{item.zone}</span>
-                              <div className={`w-2 h-2 rounded-full bg-${item.color}-500`} />
+                        {ZONES.map((item) => (
+                          <motion.div 
+                            key={item.id} 
+                            layoutId={item.id}
+                            onClick={() => setSelectedZone(selectedZone === item.id ? null : item.id)}
+                            className={`p-5 rounded-3xl cursor-pointer transition-all border ${
+                              selectedZone === item.id 
+                                ? "bg-primary/10 border-primary shadow-[0_0_30px_rgba(var(--primary),0.2)] scale-[1.02]" 
+                                : "bg-white/5 border-white/10 hover:bg-white/10"
+                            }`}
+                          >
+                            <div className="flex items-center justify-between mb-3">
+                              <span className="text-[10px] font-black uppercase tracking-widest text-foreground/40">{item.name}</span>
+                              <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: item.color }} />
                             </div>
-                            <h4 className="font-bold text-sm mb-1">{item.area}</h4>
-                            <p className="text-[10px] text-primary font-mono uppercase mb-1">{item.task} Team</p>
-                            <p className="text-[10px] text-foreground/40 italic">Gear: {item.gear}</p>
-                          </div>
+                            <h4 className="font-bold text-base mb-1">{item.area}</h4>
+                            <p className="text-xs text-primary font-mono uppercase mb-2">{item.task}</p>
+                            
+                            <AnimatePresence mode="wait">
+                              {selectedZone === item.id ? (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: "auto" }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  className="pt-3 border-t border-white/10 mt-3"
+                                >
+                                  <p className="text-[10px] text-foreground/80 mb-3 leading-relaxed">
+                                    <span className="text-primary font-bold">PROTOCOL:</span> {item.protocol}
+                                  </p>
+                                  <div className="flex items-center justify-between gap-2">
+                                    <span className="text-[9px] text-foreground/40 font-mono italic">Gear: {item.gear}</span>
+                                    <button className="px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-[10px] font-bold">
+                                      ASSIGN
+                                    </button>
+                                  </div>
+                                </motion.div>
+                              ) : (
+                                <motion.p 
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  className="text-[10px] text-foreground/40 italic truncate"
+                                >
+                                  Click for deployment protocol...
+                                </motion.p>
+                              )}
+                            </AnimatePresence>
+                          </motion.div>
                         ))}
                       </motion.div>
                     )}
