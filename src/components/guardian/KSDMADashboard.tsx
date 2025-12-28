@@ -12,7 +12,7 @@ import {
 
 type Region = 'wayanad' | 'idukki' | 'pathanamthitta' | 'alappuzha';
 
-const REGIONAL_DATA = {
+const REGIONAL_DATA: Record<Region, any> = {
   wayanad: {
     name: "Wayanad",
     metrics: [
@@ -88,7 +88,7 @@ const REGIONAL_DATA = {
       { name: "Chengannur", level: "moderate", lat: 9.32, lng: 76.61, population: 35000 },
     ],
     alerts: [
-      { type: "critical", message: "Sea erosion warning for coastal belt", time: "刚刚" },
+      { type: "critical", message: "Sea erosion warning for coastal belt", time: "Just now" },
       { type: "warning", message: "Kuttanad water logging risk high", time: "8 min ago" },
       { type: "info", message: "Fishermen advised not to venture into sea", time: "1 hour ago" },
     ]
@@ -171,7 +171,7 @@ function MetricCard({ metric, index }: { metric: any; index: number }) {
 }
 
 export function KSDMADashboard() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentRegion, setCurrentRegion] = useState<Region>('wayanad');
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
@@ -222,9 +222,9 @@ export function KSDMADashboard() {
                   <button
                     key={region}
                     onClick={() => setCurrentRegion(region)}
-                    className={`px-4 py-2.5 rounded-xl text-xs font-bold border transition-all ${
+                    className={`px-4 py-3 rounded-xl text-[10px] font-black tracking-wider uppercase border transition-all ${
                       currentRegion === region 
-                        ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20" 
+                        ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20 scale-[1.02]" 
                         : "bg-white/5 border-white/10 text-foreground/40 hover:bg-white/10"
                     }`}
                   >
@@ -235,7 +235,7 @@ export function KSDMADashboard() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-sm font-bold uppercase tracking-widest text-foreground/40 flex items-center gap-2">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-foreground/40 flex items-center gap-2 mb-4">
                 <Mountain className="w-4 h-4" />
                 {t.dashboard.nodes} ({regionData.name})
               </h3>
@@ -246,22 +246,22 @@ export function KSDMADashboard() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
                   onClick={() => setSelectedNode(selectedNode === node.name ? null : node.name)}
-                  className={`p-4 rounded-xl cursor-pointer transition-all ${
+                  className={`p-5 rounded-2xl cursor-pointer transition-all border ${
                     selectedNode === node.name 
-                      ? "bg-white/10 border border-white/20" 
-                      : "bg-white/5 border border-transparent hover:border-white/10"
+                      ? "bg-white/10 border-white/20 shadow-xl" 
+                      : "bg-white/5 border-transparent hover:border-white/10"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
-                      <div className={`w-3 h-3 rounded-full ${getRiskColor(node.level)} ${node.level === "critical" ? "animate-pulse" : ""}`} />
-                      <span className="font-bold">{node.name}</span>
+                      <div className={`w-3 h-3 rounded-full ${getRiskColor(node.level)} ${node.level === "critical" ? "animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.5)]" : ""}`} />
+                      <span className="font-bold text-sm">{node.name}</span>
                     </div>
-                    <span className={`text-[10px] font-bold uppercase px-2 py-1 rounded-full ${
-                      node.level === "critical" ? "bg-red-500/20 text-red-400" :
-                      node.level === "high" ? "bg-orange-500/20 text-orange-400" :
-                      node.level === "moderate" ? "bg-yellow-500/20 text-yellow-400" :
-                      "bg-green-500/20 text-green-400"
+                    <span className={`text-[9px] font-black uppercase px-2.5 py-1 rounded-lg ${
+                      node.level === "critical" ? "bg-red-500/20 text-red-400 border border-red-500/20" :
+                      node.level === "high" ? "bg-orange-500/20 text-orange-400 border border-orange-500/20" :
+                      node.level === "moderate" ? "bg-yellow-500/20 text-yellow-400 border border-yellow-500/20" :
+                      "bg-green-500/20 text-green-400 border border-green-500/20"
                     }`}>
                       {node.level}
                     </span>
@@ -270,15 +270,15 @@ export function KSDMADashboard() {
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
-                      className="pt-3 mt-3 border-t border-white/10 grid grid-cols-2 gap-3 text-xs"
+                      className="pt-4 mt-4 border-t border-white/5 grid grid-cols-2 gap-4 text-xs"
                     >
                       <div>
-                        <span className="text-foreground/40 text-[10px]">Coordinates</span>
-                        <p className="font-mono">{node.lat}°N, {node.lng}°E</p>
+                        <span className="text-foreground/40 text-[9px] font-black uppercase tracking-widest">Coordinates</span>
+                        <p className="font-mono text-foreground/80">{node.lat}°N, {node.lng}°E</p>
                       </div>
                       <div>
-                        <span className="text-foreground/40 text-[10px]">Population</span>
-                        <p className="font-mono">{node.population.toLocaleString()}</p>
+                        <span className="text-foreground/40 text-[9px] font-black uppercase tracking-widest">Population</span>
+                        <p className="font-mono text-foreground/80">{node.population.toLocaleString()}</p>
                       </div>
                     </motion.div>
                   )}
@@ -292,43 +292,43 @@ export function KSDMADashboard() {
             whileInView={{ opacity: 1, y: 0 }}
             className="lg:col-span-8"
           >
-            <div className="glass-card rounded-3xl p-1 overflow-hidden shadow-2xl shadow-black/40">
-              <div className="bg-black/60 rounded-[22px] overflow-hidden border border-white/5">
-                <div className="p-4 border-b border-white/5 flex items-center justify-between bg-gradient-to-r from-black/40 to-transparent">
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
-                      <span className="text-[10px] font-mono uppercase tracking-widest opacity-60">Live Feed</span>
+            <div className="glass-card rounded-[2.5rem] p-1 overflow-hidden shadow-2xl shadow-black/40">
+              <div className="bg-black/80 rounded-[2.2rem] overflow-hidden border border-white/5">
+                <div className="p-6 border-b border-white/5 flex items-center justify-between bg-gradient-to-r from-black/40 via-transparent to-transparent">
+                  <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
+                      <span className="text-[10px] font-black uppercase tracking-widest opacity-60">Live Command Feed</span>
                     </div>
-                    <div className="h-4 w-px bg-white/10" />
-                    <span className="text-[10px] font-mono text-foreground/40">
+                    <div className="h-5 w-px bg-white/10" />
+                    <span className="text-[10px] font-mono text-foreground/40 tracking-widest">
                       {time} IST
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] uppercase tracking-widest text-foreground/40">{regionData.name} Sector</span>
-                    <div className="p-1.5 rounded bg-white/5">
-                      <Radio className="w-3.5 h-3.5 text-primary" />
+                  <div className="flex items-center gap-3">
+                    <span className="text-[9px] font-black uppercase tracking-widest text-foreground/30">{regionData.name} SECTOR</span>
+                    <div className="p-2 rounded-xl bg-primary/10 border border-primary/20">
+                      <Radio className="w-4 h-4 text-primary animate-pulse" />
                     </div>
                   </div>
                 </div>
                 
-                <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-6">
+                <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-8">
                     <div className="flex items-center justify-between">
-                      <h5 className="text-[10px] uppercase tracking-widest text-foreground/40 flex items-center gap-2">
-                        <BarChart3 className="w-4 h-4" /> Rainfall Intensity (Real-time)
+                      <h5 className="text-[10px] font-black uppercase tracking-widest text-foreground/40 flex items-center gap-2">
+                        <BarChart3 className="w-4 h-4 text-primary" /> Rainfall Intensity
                       </h5>
-                      <span className="text-[10px] px-2 py-1 rounded-full bg-red-500/20 text-red-400 font-bold">LIVE</span>
+                      <span className="text-[9px] px-2.5 py-1 rounded-lg bg-red-500/20 text-red-400 font-black border border-red-500/20">LIVE METRICS</span>
                     </div>
                     <RealTimeChart />
                     
-                    <div className="p-4 rounded-xl bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 shadow-lg shadow-red-500/5">
-                      <div className="flex items-start gap-3">
-                        <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                    <div className="p-5 rounded-2xl bg-gradient-to-r from-red-500/10 to-transparent border border-red-500/20 shadow-xl shadow-red-500/5">
+                      <div className="flex items-start gap-4">
+                        <AlertTriangle className="w-6 h-6 text-red-400 flex-shrink-0" />
                         <div>
-                          <p className="text-sm text-red-400 font-bold mb-1">Sector Alert Active</p>
-                          <p className="text-[11px] text-red-400/70 leading-relaxed">
+                          <p className="text-xs text-red-400 font-black uppercase tracking-widest mb-1">CRITICAL ALERT</p>
+                          <p className="text-[11px] text-foreground/70 leading-relaxed font-medium">
                             {regionData.alerts[0].message}. All emergency response units in {regionData.name} are on high alert.
                           </p>
                         </div>
@@ -337,20 +337,20 @@ export function KSDMADashboard() {
                   </div>
 
                   <div className="space-y-6">
-                    <h5 className="text-[10px] uppercase tracking-widest text-foreground/40 flex items-center gap-2">
-                      <Map className="w-4 h-4" /> Topographical Risk Map
+                    <h5 className="text-[10px] font-black uppercase tracking-widest text-foreground/40 flex items-center gap-2">
+                      <Map className="w-4 h-4 text-primary" /> Terrain Analysis
                     </h5>
-                    <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 overflow-hidden group">
-                      <div className="absolute inset-0 topographic-bg opacity-30 group-hover:opacity-40 transition-opacity" />
+                    <div className="relative aspect-square rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 overflow-hidden group">
+                      <div className="absolute inset-0 topographic-bg opacity-20 group-hover:opacity-30 transition-opacity duration-700" />
                       
                       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
                         <defs>
                           <radialGradient id="criticalGlow">
-                            <stop offset="0%" stopColor="#ef4444" stopOpacity="0.6" />
+                            <stop offset="0%" stopColor="#ef4444" stopOpacity="0.8" />
                             <stop offset="100%" stopColor="#ef4444" stopOpacity="0" />
                           </radialGradient>
                           <radialGradient id="highGlow">
-                            <stop offset="0%" stopColor="#f97316" stopOpacity="0.4" />
+                            <stop offset="0%" stopColor="#f97316" stopOpacity="0.6" />
                             <stop offset="100%" stopColor="#f97316" stopOpacity="0" />
                           </radialGradient>
                         </defs>
@@ -361,24 +361,24 @@ export function KSDMADashboard() {
                             d={`M5 ${50 + i} Q 25 ${40 + i * 0.5}, 50 ${50 + i * 0.3} T 95 ${50 + i}`}
                             fill="none"
                             stroke="white"
-                            strokeOpacity="0.1"
+                            strokeOpacity="0.05"
                             strokeWidth="0.5"
                             initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 2, delay: i * 0.1 }}
+                            whileInView={{ pathLength: 1 }}
+                            transition={{ duration: 2.5, delay: i * 0.1 }}
                           />
                         ))}
 
                         <motion.circle
                           cx="35" cy="40"
-                          r="15"
+                          r="18"
                           fill="url(#criticalGlow)"
-                          animate={{ r: [15, 18, 15] }}
-                          transition={{ repeat: Infinity, duration: 2 }}
+                          animate={{ opacity: [0.3, 0.6, 0.3] }}
+                          transition={{ repeat: Infinity, duration: 3 }}
                         />
-                        <circle cx="35" cy="40" r="4" fill="#ef4444" />
+                        <circle cx="35" cy="40" r="3.5" fill="#ef4444" className="shadow-lg shadow-red-500" />
                         
-                        <circle cx="60" cy="55" r="10" fill="url(#highGlow)" />
+                        <circle cx="60" cy="55" r="12" fill="url(#highGlow)" />
                         <circle cx="60" cy="55" r="3" fill="#f97316" />
                         
                         <circle cx="75" cy="35" r="2" fill="#eab308" />
@@ -388,23 +388,24 @@ export function KSDMADashboard() {
                           x1="35" y1="40" x2="60" y2="55"
                           stroke="#ef4444"
                           strokeWidth="1"
-                          strokeDasharray="4 2"
+                          strokeDasharray="4 3"
+                          strokeOpacity="0.4"
                           initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 1, delay: 0.5 }}
+                          whileInView={{ pathLength: 1 }}
+                          transition={{ duration: 1.5, delay: 0.8 }}
                         />
                       </svg>
 
-                      <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end">
-                        <div className="flex gap-2">
+                      <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                        <div className="flex gap-3">
                           {[
-                            { color: "bg-red-500", label: "Critical" },
+                            { color: "bg-red-500", label: "Crit" },
                             { color: "bg-orange-500", label: "High" },
-                            { color: "bg-yellow-500", label: "Moderate" },
+                            { color: "bg-yellow-500", label: "Mod" },
                           ].map((item) => (
-                            <div key={item.label} className="flex items-center gap-1">
-                              <div className={`w-1.5 h-1.5 rounded-full ${item.color}`} />
-                              <span className="text-[8px] text-foreground/40 font-mono">{item.label}</span>
+                            <div key={item.label} className="flex items-center gap-1.5">
+                              <div className={`w-1.5 h-1.5 rounded-full ${item.color} shadow-[0_0_5px_rgba(255,255,255,0.2)]`} />
+                              <span className="text-[8px] text-foreground/40 font-black uppercase tracking-tighter">{item.label}</span>
                             </div>
                           ))}
                         </div>
@@ -413,43 +414,51 @@ export function KSDMADashboard() {
                   </div>
                 </div>
 
-                <div className="px-6 pb-6">
+                <div className="px-8 pb-8">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {regionData.metrics.map((metric, i) => (
+                    {regionData.metrics.map((metric: any, i: number) => (
                       <MetricCard key={metric.label} metric={metric} index={i} />
                     ))}
                   </div>
                 </div>
 
-                <div className="px-6 pb-6">
-                  <h5 className="text-[10px] uppercase tracking-widest text-foreground/40 mb-4 flex items-center gap-2">
-                    <AlertCircle className="w-4 h-4" /> {t.dashboard.activeAlerts}
+                <div className="px-8 pb-8">
+                  <h5 className="text-[10px] font-black uppercase tracking-widest text-foreground/40 mb-5 flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 text-primary" /> {t.dashboard.activeAlerts}
                   </h5>
-                  <div className="space-y-2">
-                    {regionData.alerts.map((alert, i) => (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {regionData.alerts.map((alert: any, i: number) => (
                       <motion.div
                         key={i}
                         initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className={`flex items-center gap-3 p-3 rounded-xl border ${
+                        className={`flex items-center gap-4 p-4 rounded-2xl border ${
                           alert.type === "critical" ? "bg-red-500/10 border-red-500/20" :
                           alert.type === "warning" ? "bg-yellow-500/10 border-yellow-500/20" :
                           "bg-white/5 border-white/10"
                         }`}
                       >
-                        {alert.type === "critical" ? (
-                          <AlertTriangle className="w-4 h-4 text-red-400 flex-shrink-0" />
-                        ) : alert.type === "warning" ? (
-                          <AlertCircle className="w-4 h-4 text-yellow-400 flex-shrink-0" />
-                        ) : (
-                          <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                        )}
-                        <span className="flex-1 text-xs font-medium">{alert.message}</span>
-                        <span className="text-[10px] text-foreground/40 flex items-center gap-1 font-mono">
-                          <Clock className="w-3 h-3" />
-                          {alert.time}
-                        </span>
+                        <div className={`p-2 rounded-lg ${
+                          alert.type === "critical" ? "bg-red-500/20 text-red-400" :
+                          alert.type === "warning" ? "bg-yellow-500/20 text-yellow-400" :
+                          "bg-primary/20 text-primary"
+                        }`}>
+                          {alert.type === "critical" ? (
+                            <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                          ) : alert.type === "warning" ? (
+                            <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                          ) : (
+                            <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+                          )}
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-xs font-bold leading-tight mb-1">{alert.message}</p>
+                          <div className="flex items-center gap-2 opacity-40 font-mono text-[9px] uppercase tracking-widest">
+                            <Clock className="w-3 h-3" />
+                            {alert.time}
+                          </div>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
