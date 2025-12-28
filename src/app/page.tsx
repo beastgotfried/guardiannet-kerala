@@ -22,6 +22,15 @@ export default function Home() {
   const [isVolunteerViewOpen, setIsVolunteerViewOpen] = useState(false);
   const [showVolunteerInfo, setShowVolunteerInfo] = useState(false);
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
+  const [showNotification, setShowNotification] = useState(false);
+
+  useEffect(() => {
+    if (isLandslideTriggered) {
+      setShowNotification(true);
+      const timer = setTimeout(() => setShowNotification(false), 8000);
+      return () => clearTimeout(timer);
+    }
+  }, [isLandslideTriggered]);
 
   const ZONES = [
     { 
