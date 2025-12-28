@@ -8,7 +8,7 @@ import { KSDMADashboard } from "@/components/guardian/KSDMADashboard";
 import { AIAssistant } from "@/components/guardian/AIAssistant";
 import { VerificationPortal } from "@/components/guardian/VerificationPortal";
 import { VolunteerView } from "@/components/guardian/VolunteerView";
-import { Shield, Menu, Github, ExternalLink, X, Users, Briefcase, Zap, Globe } from "lucide-react";
+import { Shield, Menu, Github, ExternalLink, X, Users, Briefcase, Zap, Globe, AlertTriangle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/hooks/use-language";
