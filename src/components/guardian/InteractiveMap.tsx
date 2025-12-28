@@ -311,6 +311,7 @@ export function InteractiveMap({ onLandslideTrigger }: { onLandslideTrigger?: (i
                   >
                     {mapLoaded && typeof window !== "undefined" && (
                       <MapContainer
+                        key={`${mapType}-${is3D}`}
                         center={WAYANAD_CENTER}
                         zoom={12}
                         style={{ height: "100%", width: "100%" }}
