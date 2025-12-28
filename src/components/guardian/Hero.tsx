@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -123,7 +122,7 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-[ -0.04em] mb-10 leading-[0.9]"
+            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-[-0.04em] mb-10 leading-[0.9]"
           >
             <span className="text-white drop-shadow-[0_10px_30px_rgba(255,255,255,0.1)]">
               {t.hero.title1}
