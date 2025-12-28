@@ -133,10 +133,10 @@ export default function Home() {
             
             <div className="hidden md:flex items-center gap-1">
               {[
-                { name: "Technology", id: "technology" },
-                { name: "KSDMA", id: "ksdma" },
-                { name: "Kerala Context", id: "#" },
-                { name: "About", id: "#" }
+                { name: t.nav.technology, id: "technology" },
+                { name: t.nav.ksdma, id: "ksdma" },
+                { name: t.nav.keralaContext, id: "#" },
+                { name: t.nav.about, id: "#" }
               ].map((item) => (
                 <motion.a 
                   key={item.name}
@@ -150,13 +150,34 @@ export default function Home() {
                 </motion.a>
               ))}
               <div className="w-px h-6 bg-white/10 mx-2" />
+              
+              <div className="flex items-center gap-1 mr-4 bg-white/5 rounded-xl p-1 border border-white/5">
+                {[
+                  { code: 'en', label: 'EN' },
+                  { code: 'hi', label: 'HI' },
+                  { code: 'ml', label: 'ML' }
+                ].map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => setLanguage(lang.code as any)}
+                    className={`px-3 py-1.5 rounded-lg text-[10px] font-black transition-all ${
+                      language === lang.code 
+                        ? "bg-primary text-primary-foreground shadow-lg" 
+                        : "text-foreground/40 hover:text-foreground hover:bg-white/5"
+                    }`}
+                  >
+                    {lang.label}
+                  </button>
+                ))}
+              </div>
+
               <motion.button 
                 onClick={() => setIsPortalOpen(true)}
                 className="px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm flex items-center gap-2 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Volunteer
+                {t.nav.volunteer}
                 <ExternalLink className="w-4 h-4" />
               </motion.button>
             </div>
