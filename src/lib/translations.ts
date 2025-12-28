@@ -59,6 +59,8 @@ export const translations = {
       platform: "Platform",
       regions: "Regions",
       resources: "Resources",
+      platformItems: ["Asset Mapping", "Mesh Networking", "Skill Verification", "Camp Management"],
+      regionItems: ["Wayanad", "Idukki", "Palakkad", "Kozhikode", "Malappuram"],
       links: {
         documentation: "Documentation",
         apiAccess: "API Access",
