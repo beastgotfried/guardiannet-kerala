@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, MapPin, Radio, Battery, AlertTriangle, Navigation, CheckCircle2, Info } from "lucide-react";
+import { Shield, MapPin, Radio, Battery, AlertTriangle, Navigation, CheckCircle2, Info, Activity } from "lucide-react";
 
 export const VolunteerView = ({ onClose }) => {
   const [status, setStatus] = useState("standby"); // standby, alerting, mission, accepted
@@ -17,12 +17,10 @@ export const VolunteerView = ({ onClose }) => {
   });
 
   useEffect(() => {
-    // Battery drain simulation
     const interval = setInterval(() => {
       setBattery(prev => Math.max(0, prev - 1));
     }, 30000);
 
-    // Simulation Trigger
     if (status === "standby") {
       const timer = setTimeout(() => {
         setStatus("alerting");
@@ -45,12 +43,10 @@ export const VolunteerView = ({ onClose }) => {
         exit={{ y: 100, opacity: 0 }}
         className="w-full max-w-[380px] h-[700px] bg-black border-2 border-[#39FF14]/20 rounded-[3rem] overflow-hidden relative shadow-[0_0_50px_rgba(57,255,20,0.1)] flex flex-col font-sans"
       >
-        {/* Notch */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20 flex items-center justify-center gap-1">
           <div className="w-8 h-1 bg-white/10 rounded-full" />
         </div>
 
-        {/* Status Bar */}
         <div className="p-6 pt-8 flex justify-between items-center text-[10px] font-mono text-[#39FF14]/60">
           <div className="flex items-center gap-2">
             <span>12:44</span>
@@ -71,7 +67,6 @@ export const VolunteerView = ({ onClose }) => {
           </div>
         </div>
 
-        {/* Header */}
         <div className="px-6 py-2 border-b border-[#39FF14]/10 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-[#39FF14] animate-pulse" />
@@ -85,7 +80,6 @@ export const VolunteerView = ({ onClose }) => {
           </button>
         </div>
 
-        {/* Main Content */}
         <div className="flex-1 overflow-hidden relative">
           <AnimatePresence mode="wait">
             {status === "standby" && (
@@ -239,7 +233,6 @@ export const VolunteerView = ({ onClose }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 className="h-full flex flex-col"
               >
-                {/* Tactical Map Simulation */}
                 <div className="flex-1 relative bg-zinc-900 overflow-hidden">
                   <div className="absolute inset-0 opacity-40">
                     <div className="absolute inset-0 topographic-bg" />
@@ -263,7 +256,6 @@ export const VolunteerView = ({ onClose }) => {
                     </div>
                   </div>
 
-                  {/* Navigation Overlay */}
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl">
                       <div className="flex items-center gap-4 mb-4">
@@ -314,19 +306,6 @@ export const VolunteerView = ({ onClose }) => {
           </AnimatePresence>
         </div>
 
-        {/* Footer Bar */}
-        <div className="p-4 border-t border-[#39FF14]/10 bg-white/5 flex justify-center">
-          <div className="w-32 h-1 bg-white/20 rounded-full" />
-        </div>
-      </motion.div>
-    </div>
-  );
-};
-
-          </AnimatePresence>
-        </div>
-
-        {/* Footer Bar */}
         <div className="p-4 border-t border-[#39FF14]/10 bg-white/5 flex justify-center">
           <div className="w-32 h-1 bg-white/20 rounded-full" />
         </div>
