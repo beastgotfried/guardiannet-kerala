@@ -396,8 +396,6 @@ export default function Home() {
           {isVolunteerViewOpen && (
             <VolunteerView 
               onClose={() => setIsVolunteerViewOpen(false)} 
-              t={t}
-              language={language}
             />
           )}
         </AnimatePresence>
