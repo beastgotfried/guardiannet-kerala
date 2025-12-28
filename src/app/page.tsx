@@ -79,6 +79,10 @@ export default function Home() {
     }
   ];
 
+  const handleExternalLink = (url: string) => {
+    window.parent.postMessage({ type: "OPEN_EXTERNAL_URL", data: { url } }, "*");
+  };
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement> | null, id: string) => {
     if (e) e.preventDefault();
     const element = document.getElementById(id);
