@@ -417,7 +417,7 @@ export default function Home() {
               
               <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-16">
                 <div>
-                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">Platform</h4>
+                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.platform}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
                     {["Asset Mapping", "Mesh Networking", "Skill Verification", "Camp Management"].map((item) => (
                       <li key={item}>
@@ -427,7 +427,7 @@ export default function Home() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">Regions</h4>
+                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.regions}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
                     {["Wayanad", "Idukki", "Palakkad", "Kozhikode", "Malappuram"].map((item) => (
                       <li key={item}>
@@ -437,13 +437,43 @@ export default function Home() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">Resources</h4>
+                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.resources}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
-                    {["Documentation", "API Access", "KSDMA Portal", "Emergency Contacts"].map((item) => (
-                      <li key={item}>
-                        <a href="#" className="hover:text-primary transition-colors">{item}</a>
-                      </li>
-                    ))}
+                    <li>
+                      <a 
+                        href="https://timesofindia.indiatimes.com/topic/wayanad-floods" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="hover:text-primary transition-colors"
+                      >
+                        {t.footer.links.documentation}
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="hover:text-primary transition-colors">
+                        {t.footer.links.apiAccess}
+                      </a>
+                    </li>
+                    <li>
+                      <a 
+                        href="https://sdma.kerala.gov.in/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="hover:text-primary transition-colors"
+                      >
+                        {t.footer.links.ksdmaPortal}
+                      </a>
+                    </li>
+                    <li>
+                      <a 
+                        href="https://sdma.kerala.gov.in/emergency-contacts/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="hover:text-primary transition-colors"
+                      >
+                        {t.footer.links.emergencyContacts}
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>
