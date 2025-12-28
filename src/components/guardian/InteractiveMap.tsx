@@ -48,6 +48,21 @@ interface Asset {
   verified: boolean;
 }
 
+const ASSETS: Asset[] = [
+  { id: 1, type: "drone", name: "Arun K. - Drone Pilot", location: [11.6920, 76.1250], task: "Aerial Surveillance", status: "standby", verified: true },
+  { id: 2, type: "medical", name: "Dr. Priya M. - Trauma Surgeon", location: [11.6780, 76.1400], task: "Field Triage Setup", status: "standby", eta: "8 min", verified: true },
+  { id: 3, type: "jeep", name: "Rajesh T. - 4x4 Mahindra", location: [11.6900, 76.1450], task: "Evacuation Support", status: "standby", verified: true },
+  { id: 4, type: "excavator", name: "Anand JCB Services", location: [11.6750, 76.1200], task: "Debris Clearance", status: "standby", eta: "15 min", verified: true },
+  { id: 5, type: "ham", name: "VU2ABC - Ham Operator", location: [11.6830, 76.1350], task: "Emergency Comms", status: "standby", verified: true },
+  { id: 6, type: "medical", name: "Leela - Army Nurse (Retd)", location: [11.6870, 76.1280], task: "First Aid Station", status: "standby", verified: true },
+];
+
+const RISK_ZONES = [
+  { center: [11.6854, 76.1320] as [number, number], radius: 800, level: "critical", name: "Meppadi Sector" },
+  { center: [11.6750, 76.1400] as [number, number], radius: 500, level: "high", name: "Chooralmala" },
+  { center: [11.6950, 76.1200] as [number, number], radius: 400, level: "moderate", name: "Mundakkai" },
+];
+
 function AssetMarkers({ 
   assets, 
   activeAssets, 
@@ -300,62 +315,15 @@ export function InteractiveMap() {
                         }}
                       />
                     )}
+
+                    <AssetMarkers 
+                      assets={ASSETS}
+                      activeAssets={activeAssets}
+                      setSelectedAsset={setSelectedAsset}
+                      getAssetIcon={getAssetIcon}
+                    />
                   </MapContainer>
                 )}
-
-                <AnimatePresence>
-                  {ASSETS.map((asset) => {
-                    const isActive = activeAssets.includes(asset.id);
-                    if (!mapLoaded) return null;
-                    
-                    return (
-                      <motion.div
-                        key={asset.id}
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ 
-                          scale: isActive ? 1 : 0.7, 
-                          opacity: isActive ? 1 : 0.4 
-                        }}
-                        style={{
-                          position: "absolute",
-                          left: `${((asset.location[1] - 76.10) / 0.06) * 100}%`,
-                          top: `${100 - ((asset.location[0] - 11.66) / 0.05) * 100}%`,
-                          transform: "translate(-50%, -50%)",
-                          zIndex: 1000,
-                        }}
-                        className="cursor-pointer"
-                        onClick={() => setSelectedAsset(asset)}
-                      >
-                        <div className={`relative p-3 rounded-xl transition-all ${
-                          isActive 
-                            ? "bg-primary/90 text-primary-foreground shadow-lg shadow-primary/30" 
-                            : "bg-white/20 text-white/60"
-                        }`}>
-                          <span className="text-lg">{getAssetIcon(asset.type)}</span>
-                          {isActive && (
-                            <motion.div
-                              initial={{ scale: 1 }}
-                              animate={{ scale: [1, 1.5, 1] }}
-                              transition={{ repeat: Infinity, duration: 2 }}
-                              className="absolute inset-0 rounded-xl border-2 border-primary"
-                            />
-                          )}
-                        </div>
-                        {isActive && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 5 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="absolute top-full mt-1 left-1/2 -translate-x-1/2 whitespace-nowrap"
-                          >
-                            <span className="px-2 py-1 rounded-md bg-black/80 text-[10px] font-bold text-white">
-                              {asset.name.split(" - ")[0]}
-                            </span>
-                          </motion.div>
-                        )}
-                      </motion.div>
-                    );
-                  })}
-                </AnimatePresence>
 
                 {isTriggered && (
                   <motion.div
