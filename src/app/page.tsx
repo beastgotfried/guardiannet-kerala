@@ -282,12 +282,12 @@ export default function Home() {
                         <Users className="w-6 h-6" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold italic tracking-tight">Active Response Units</h3>
-                        <p className="text-foreground/60 text-sm font-mono">Real-time Volunteer Deployment Status</p>
+                        <h3 className="text-2xl font-bold italic tracking-tight">{t.volunteer.activeUnits}</h3>
+                        <p className="text-foreground/60 text-sm font-mono">{t.volunteer.status}</p>
                       </div>
                     </div>
                     <p className="text-foreground/60 max-w-xl mb-6 leading-relaxed">
-                      Landslide detected in <span className="text-red-400 font-bold">Meppadi-Chooralmala</span> sector. 
+                      {t.volunteer.detected} <span className="text-red-400 font-bold">Meppadi-Chooralmala</span> {t.volunteer.sector}. 
                       Volunteers are categorized into specialized strike teams. Access the mobile interface to receive direct assignments.
                     </p>
                     <div className="flex flex-wrap gap-4">
@@ -297,7 +297,7 @@ export default function Home() {
                         whileTap={{ scale: 0.98 }}
                         className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-bold flex items-center gap-2 hover:bg-white/10 transition-all shadow-xl"
                       >
-                        {showVolunteerInfo ? "Hide Tactical Briefing" : "View Tactical Briefing"}
+                        {showVolunteerInfo ? t.volunteer.briefing.hide : t.volunteer.briefing.show}
                         <Zap className={`w-4 h-4 ${showVolunteerInfo ? "rotate-180" : ""} transition-transform text-primary`} />
                       </motion.button>
                       <motion.button
@@ -307,7 +307,7 @@ export default function Home() {
                         className="px-8 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-black flex items-center gap-3 shadow-lg shadow-primary/20"
                       >
                         <Briefcase className="w-5 h-5" />
-                        OPEN VOLUNTEER INTERFACE
+                        {t.volunteer.interface}
                       </motion.button>
                     </div>
                   </div>
