@@ -238,30 +238,30 @@ export function InteractiveMap({ onLandslideTrigger }: { onLandslideTrigger?: (i
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl">
-              <div className="absolute top-0 left-0 right-0 z-[1000] p-4 bg-gradient-to-b from-black/80 to-transparent">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold ${
-                      networkStatus === "online" ? "bg-green-500/20 text-green-400" :
-                      networkStatus === "degraded" ? "bg-yellow-500/20 text-yellow-400" :
-                      "bg-purple-500/20 text-purple-400"
-                    }`}>
-                      {networkStatus === "mesh" ? <WifiOff className="w-3 h-3" /> : <Wifi className="w-3 h-3" />}
-                      {networkStatus === "online" ? "ONLINE" : networkStatus === "degraded" ? "DEGRADED" : "MESH MODE"}
+            <div className="lg:col-span-2">
+              <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl">
+                <div className="absolute top-0 left-0 right-0 z-[1000] p-4 bg-gradient-to-b from-black/80 to-transparent">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold ${
+                        networkStatus === "online" ? "bg-green-500/20 text-green-400" :
+                        networkStatus === "degraded" ? "bg-yellow-500/20 text-yellow-400" :
+                        "bg-purple-500/20 text-purple-400"
+                      }`}>
+                        {networkStatus === "mesh" ? <WifiOff className="w-3 h-3" /> : <Wifi className="w-3 h-3" />}
+                        {networkStatus === "online" ? "ONLINE" : networkStatus === "degraded" ? "DEGRADED" : "MESH MODE"}
+                      </div>
+                      {isTriggered && (
+                        <motion.div 
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/20 text-red-400 text-xs font-bold"
+                        >
+                          <TriangleAlert className="w-3 h-3 animate-pulse" />
+                          LANDSLIDE TRIGGERED
+                        </motion.div>
+                      )}
                     </div>
-                    {isTriggered && (
-                      <motion.div 
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/20 text-red-400 text-xs font-bold"
-                      >
-                        <TriangleAlert className="w-3 h-3 animate-pulse" />
-                        LANDSLIDE TRIGGERED
-                      </motion.div>
-                    )}
-                  </div>
                     <div className="flex items-center gap-2">
                       <button 
                         onClick={() => setMapType(mapType === "dark" ? "topo" : "dark")}
@@ -296,17 +296,18 @@ export function InteractiveMap({ onLandslideTrigger }: { onLandslideTrigger?: (i
 
                 <div 
                   className="h-[500px] relative perspective-1000 overflow-hidden"
-                  style={{ perspective: "1200px" }}
+                  style={{ perspective: "1500px" }}
                 >
                   <motion.div 
                     animate={{ 
-                      rotateX: is3D ? 35 : 0,
-                      rotateZ: is3D ? -5 : 0,
-                      scale: is3D ? 1.1 : 1,
-                      y: is3D ? 20 : 0
+                      rotateX: is3D ? 45 : 0,
+                      rotateZ: is3D ? -10 : 0,
+                      scale: is3D ? 1.2 : 1,
+                      y: is3D ? 40 : 0,
+                      translateZ: is3D ? 100 : 0
                     }}
-                    transition={{ type: "spring", stiffness: 50, damping: 20 }}
-                    className="w-full h-full origin-bottom"
+                    transition={{ type: "spring", stiffness: 40, damping: 15 }}
+                    className="w-full h-full origin-center"
                   >
                     {mapLoaded && typeof window !== "undefined" && (
                       <MapContainer
@@ -349,169 +350,169 @@ export function InteractiveMap({ onLandslideTrigger }: { onLandslideTrigger?: (i
                           />
                         )}
 
-                          <AssetMarkers 
-                            assets={ASSETS}
-                            activeAssets={activeAssets}
-                            setSelectedAsset={setSelectedAsset}
-                            getAssetIcon={getAssetIcon}
+                        <AssetMarkers 
+                          assets={ASSETS}
+                          activeAssets={activeAssets}
+                          setSelectedAsset={setSelectedAsset}
+                          getAssetIcon={getAssetIcon}
+                        />
+                      </MapContainer>
+                    )}
+                  </motion.div>
+                </div>
+
+                {isTriggered && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ zIndex: 999 }}
+                  >
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-red-500/10 blur-[100px] animate-pulse" />
+                  </motion.div>
+                )}
+
+                <div className="absolute bottom-0 left-0 right-0 z-[1000] p-4 bg-gradient-to-t from-black/90 to-transparent">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-6">
+                      <div>
+                        <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Active Assets</p>
+                        <p className="text-2xl font-bold text-primary">{deployedCount}<span className="text-sm text-white/40">/{ASSETS.length}</span></p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Golden Hour</p>
+                        <p className="text-2xl font-bold text-accent">5km<span className="text-sm text-white/40"> radius</span></p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Elevation</p>
+                        <p className="text-2xl font-bold">1,200<span className="text-sm text-white/40">m</span></p>
+                      </div>
+                    </div>
+                    {isTriggered && scanProgress < 100 && (
+                      <div className="w-32">
+                        <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Scanning</p>
+                        <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                          <motion.div 
+                            className="h-full bg-primary"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${scanProgress}%` }}
                           />
-                        </MapContainer>
-                      )}
-                    </motion.div>
-                  </div>
-
-                  {isTriggered && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="absolute inset-0 pointer-events-none"
-                      style={{ zIndex: 999 }}
-                    >
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-red-500/20 blur-3xl animate-pulse" />
-                    </motion.div>
-                  )}
-
-                  <div className="absolute bottom-0 left-0 right-0 z-[1000] p-4 bg-gradient-to-t from-black/90 to-transparent">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-6">
-                        <div>
-                          <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Active Assets</p>
-                          <p className="text-2xl font-bold text-primary">{deployedCount}<span className="text-sm text-white/40">/{ASSETS.length}</span></p>
-                        </div>
-                        <div>
-                          <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Golden Hour</p>
-                          <p className="text-2xl font-bold text-accent">5km<span className="text-sm text-white/40"> radius</span></p>
-                        </div>
-                        <div>
-                          <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Elevation</p>
-                          <p className="text-2xl font-bold">1,200<span className="text-sm text-white/40">m</span></p>
                         </div>
                       </div>
-                      {isTriggered && scanProgress < 100 && (
-                        <div className="w-32">
-                          <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Scanning</p>
-                          <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                            <motion.div 
-                              className="h-full bg-primary"
-                              initial={{ width: 0 }}
-                              animate={{ width: `${scanProgress}%` }}
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="space-y-6">
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="glass-card rounded-2xl p-6"
-            >
-              <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-primary" />
-                Meppadi, Wayanad
-              </h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-white/5">
-                  <span className="text-sm text-foreground/60">Risk Level</span>
-                  <span className="text-sm font-bold text-red-400">CRITICAL</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-white/5">
-                  <span className="text-sm text-foreground/60">Soil Saturation</span>
-                  <span className="text-sm font-bold text-orange-400">94%</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-white/5">
-                  <span className="text-sm text-foreground/60">Rainfall (24h)</span>
-                  <span className="text-sm font-bold">187mm</span>
-                </div>
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-sm text-foreground/60">Terrain Type</span>
-                  <span className="text-sm font-bold">Western Ghats</span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.button
-              onClick={() => setIsTriggered(!isTriggered)}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className={`w-full py-5 rounded-2xl font-bold transition-all flex items-center justify-center gap-3 text-lg ${
-                isTriggered 
-                  ? "bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg shadow-red-500/30" 
-                  : "bg-gradient-to-r from-accent to-accent/80 text-accent-foreground hover:shadow-lg hover:shadow-accent/30"
-              }`}
-            >
-              {isTriggered ? (
-                <>
-                  <AlertTriangle className="w-5 h-5 animate-pulse" />
-                  Reset Simulation
-                </>
-              ) : (
-                <>
-                  <Zap className="w-5 h-5" />
-                  Trigger Landslide Event
-                </>
-              )}
-            </motion.button>
-
-            <AnimatePresence>
-              {isTriggered && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="space-y-3"
-                >
-                  <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20">
-                    <p className="text-xs text-red-400 font-bold uppercase mb-2 flex items-center gap-2">
-                      <AlertTriangle className="w-3 h-3" /> System Alert
-                    </p>
-                    <p className="text-sm text-red-400/80">
-                      Road access blocked. Activating mesh network protocol. Searching for local assets within 5km radius...
-                    </p>
+            <div className="space-y-6">
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="glass-card rounded-2xl p-6"
+              >
+                <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-primary" />
+                  Meppadi, Wayanad
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center py-2 border-b border-white/5">
+                    <span className="text-sm text-foreground/60">Risk Level</span>
+                    <span className="text-sm font-bold text-red-400">CRITICAL</span>
                   </div>
-                  
-                  <div className="glass-card rounded-xl p-4 space-y-3">
-                    <p className="text-xs uppercase tracking-widest text-foreground/40">Deployed Assets</p>
-                    {ASSETS.filter(a => activeAssets.includes(a.id)).map((asset) => (
-                      <motion.div
-                        key={asset.id}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="flex items-center gap-3 p-2 rounded-lg bg-white/5"
-                      >
-                        <span className="text-lg">{getAssetIcon(asset.type)}</span>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium truncate">{asset.name}</p>
-                          <p className="text-[10px] text-foreground/40">{asset.task}</p>
-                        </div>
-                        <div className="flex items-center gap-1 text-primary">
-                          <Navigation className="w-3 h-3" />
-                          <span className="text-[10px] font-bold">{asset.eta || "READY"}</span>
-                        </div>
-                      </motion.div>
-                    ))}
+                  <div className="flex justify-between items-center py-2 border-b border-white/5">
+                    <span className="text-sm text-foreground/60">Soil Saturation</span>
+                    <span className="text-sm font-bold text-orange-400">94%</span>
                   </div>
+                  <div className="flex justify-between items-center py-2 border-b border-white/5">
+                    <span className="text-sm text-foreground/60">Rainfall (24h)</span>
+                    <span className="text-sm font-bold">187mm</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-sm text-foreground/60">Terrain Type</span>
+                    <span className="text-sm font-bold">Western Ghats</span>
+                  </div>
+                </div>
+              </motion.div>
 
-                  {activeAssets.length >= 4 && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20"
-                    >
-                      <p className="text-xs text-yellow-400 font-bold uppercase mb-2">Skill Deficit Detected</p>
-                      <p className="text-sm text-yellow-400/80">
-                        No additional excavators found in zone. Auto-alerting Kalpetta Heavy Machinery Union...
+              <motion.button
+                onClick={() => setIsTriggered(!isTriggered)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className={`w-full py-5 rounded-2xl font-bold transition-all flex items-center justify-center gap-3 text-lg ${
+                  isTriggered 
+                    ? "bg-gradient-to-r from-red-600 to-red-500 text-white shadow-lg shadow-red-500/30" 
+                    : "bg-gradient-to-r from-accent to-accent/80 text-accent-foreground hover:shadow-lg hover:shadow-accent/30"
+                }`}
+              >
+                {isTriggered ? (
+                  <>
+                    <AlertTriangle className="w-5 h-5 animate-pulse" />
+                    Reset Simulation
+                  </>
+                ) : (
+                  <>
+                    <Zap className="w-5 h-5" />
+                    Trigger Landslide Event
+                  </>
+                )}
+              </motion.button>
+
+              <AnimatePresence>
+                {isTriggered && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="space-y-3"
+                  >
+                    <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20">
+                      <p className="text-xs text-red-400 font-bold uppercase mb-2 flex items-center gap-2">
+                        <AlertTriangle className="w-3 h-3" /> System Alert
                       </p>
-                    </motion.div>
-                  )}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+                      <p className="text-sm text-red-400/80">
+                        Road access blocked. Activating mesh network protocol. Searching for local assets within 5km radius...
+                      </p>
+                    </div>
+                    
+                    <div className="glass-card rounded-xl p-4 space-y-3">
+                      <p className="text-xs uppercase tracking-widest text-foreground/40">Deployed Assets</p>
+                      {ASSETS.filter(a => activeAssets.includes(a.id)).map((asset) => (
+                        <motion.div
+                          key={asset.id}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          className="flex items-center gap-3 p-2 rounded-lg bg-white/5"
+                        >
+                          <span className="text-lg">{getAssetIcon(asset.type)}</span>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium truncate">{asset.name}</p>
+                            <p className="text-[10px] text-foreground/40">{asset.task}</p>
+                          </div>
+                          <div className="flex items-center gap-1 text-primary">
+                            <Navigation className="w-3 h-3" />
+                            <span className="text-[10px] font-bold">{asset.eta || "READY"}</span>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {activeAssets.length >= 4 && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20"
+                      >
+                        <p className="text-xs text-yellow-400 font-bold uppercase mb-2">Skill Deficit Detected</p>
+                        <p className="text-sm text-yellow-400/80">
+                          No additional excavators found in zone. Auto-alerting Kalpetta Heavy Machinery Union...
+                        </p>
+                      </motion.div>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
         </div>
       </div>
     </section>
