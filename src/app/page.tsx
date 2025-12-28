@@ -18,6 +18,64 @@ export default function Home() {
   const [isLandslideTriggered, setIsLandslideTriggered] = useState(false);
   const [isVolunteerViewOpen, setIsVolunteerViewOpen] = useState(false);
   const [showVolunteerInfo, setShowVolunteerInfo] = useState(false);
+  const [selectedZone, setSelectedZone] = useState<string | null>(null);
+
+  const ZONES = [
+    { 
+      id: "zone-1", 
+      name: "Zone 1", 
+      area: "Punchirimattom", 
+      task: "High-Altitude Search", 
+      gear: "Thermal Drones, Ropes", 
+      color: "red",
+      protocol: "Focus on steep terrain scanning. All volunteers must be tethered. Continuous monitoring for secondary slides."
+    },
+    { 
+      id: "zone-2", 
+      name: "Zone 2", 
+      area: "Mundakkai", 
+      task: "Search & Rescue", 
+      gear: "Excavators, Sniffer Dogs", 
+      color: "orange",
+      protocol: "Primary impact zone. Heavy machinery priority. Silence periods every 30 mins for voice detection."
+    },
+    { 
+      id: "zone-3", 
+      name: "Zone 3", 
+      area: "School Area", 
+      task: "Transit & Medical", 
+      gear: "Trauma Kits, OT Units", 
+      color: "yellow",
+      protocol: "Casualty collection point. Triage active. Maintain clear ambulance path to Meppadi hospital."
+    },
+    { 
+      id: "zone-4", 
+      name: "Zone 4", 
+      area: "Chooralmala Town", 
+      task: "Command & Comms", 
+      gear: "Ham Radio, Sat-Link", 
+      color: "blue",
+      protocol: "Central base. Registration of all personnel entering/exiting. Mesh network node maintenance."
+    },
+    { 
+      id: "zone-5", 
+      name: "Zone 5", 
+      area: "Village Area", 
+      task: "Debris Clearance", 
+      gear: "Hydraulic Jacks, JCBs", 
+      color: "purple",
+      protocol: "Structure stabilization. Safe removal of debris. Check all voids before mechanical clearance."
+    },
+    { 
+      id: "zone-6", 
+      name: "Zone 6", 
+      area: "Downstream", 
+      task: "Recovery Ops", 
+      gear: "Boats, Underwater Drones", 
+      color: "green",
+      protocol: "Monitoring Chaliyar river banks. Specialized dive teams only. Systematic mapping of debris deposition."
+    }
+  ];
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement> | null, id: string) => {
     if (e) e.preventDefault();
