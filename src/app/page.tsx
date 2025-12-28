@@ -392,7 +392,11 @@ export default function Home() {
 
         <AnimatePresence>
           {isVolunteerViewOpen && (
-            <VolunteerView onClose={() => setIsVolunteerViewOpen(false)} />
+            <VolunteerView 
+              onClose={() => setIsVolunteerViewOpen(false)} 
+              t={t}
+              language={language}
+            />
           )}
         </AnimatePresence>
 
@@ -444,12 +448,18 @@ export default function Home() {
                   <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.resources}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
                     <li>
-                      <button 
-                        onClick={() => handleExternalLink("https://timesofindia.indiatimes.com/topic/wayanad-floods")}
-                        className="hover:text-primary transition-colors text-left"
+                      <a 
+                        href="https://timesofindia.indiatimes.com/topic/wayanad-floods"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleExternalLink("https://timesofindia.indiatimes.com/topic/wayanad-floods");
+                        }}
+                        className="hover:text-primary transition-colors text-left block"
                       >
                         {t.footer.links.documentation}
-                      </button>
+                      </a>
                     </li>
                     <li>
                       <button className="hover:text-primary transition-colors text-left">
@@ -457,20 +467,32 @@ export default function Home() {
                       </button>
                     </li>
                     <li>
-                      <button 
-                        onClick={() => handleExternalLink("https://sdma.kerala.gov.in/")}
-                        className="hover:text-primary transition-colors text-left"
+                      <a 
+                        href="https://sdma.kerala.gov.in/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleExternalLink("https://sdma.kerala.gov.in/");
+                        }}
+                        className="hover:text-primary transition-colors text-left block"
                       >
                         {t.footer.links.ksdmaPortal}
-                      </button>
+                      </a>
                     </li>
                     <li>
-                      <button 
-                        onClick={() => handleExternalLink("https://sdma.kerala.gov.in/emergency-contacts/")}
-                        className="hover:text-primary transition-colors text-left"
+                      <a 
+                        href="https://sdma.kerala.gov.in/emergency-contacts/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleExternalLink("https://sdma.kerala.gov.in/emergency-contacts/");
+                        }}
+                        className="hover:text-primary transition-colors text-left block"
                       >
                         {t.footer.links.emergencyContacts}
-                      </button>
+                      </a>
                     </li>
                   </ul>
                 </div>
