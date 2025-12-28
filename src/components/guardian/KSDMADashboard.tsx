@@ -2,18 +2,24 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { useLanguage } from "@/hooks/use-language";
 import { 
   BarChart3, Map, Mountain, Users, AlertCircle, Activity,
   Cloud, Droplets, Wind, Thermometer, Radio, Satellite,
   TrendingUp, TrendingDown, Clock, AlertTriangle, CheckCircle2
 } from "lucide-react";
 
-const LIVE_METRICS = [
-  { label: "Rainfall (24h)", value: 187, unit: "mm", max: 250, trend: "up", critical: true },
-  { label: "Soil Moisture", value: 94, unit: "%", max: 100, trend: "up", critical: true },
-  { label: "Wind Speed", value: 45, unit: "km/h", max: 100, trend: "stable", critical: false },
-  { label: "Temperature", value: 22, unit: "°C", max: 40, trend: "down", critical: false },
-];
+export function KSDMADashboard() {
+  const { t } = useLanguage();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [selectedNode, setSelectedNode] = useState<string | null>(null);
+
+  const LIVE_METRICS = [
+    { label: t.dashboard.metrics.rainfall, value: 187, unit: "mm", max: 250, trend: "up", critical: true },
+    { label: "Soil Moisture", value: 94, unit: "%", max: 100, trend: "up", critical: true },
+    { label: t.dashboard.metrics.wind, value: 45, unit: "km/h", max: 100, trend: "stable", critical: false },
+    { label: t.dashboard.metrics.temp, value: 22, unit: "°C", max: 40, trend: "down", critical: false },
+  ];
 
 const RISK_NODES = [
   { name: "Meppadi", level: "critical", lat: 11.68, lng: 76.13, population: 12500 },
