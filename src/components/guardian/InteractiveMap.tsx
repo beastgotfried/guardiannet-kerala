@@ -144,14 +144,11 @@ export function InteractiveMap({ onLandslideTrigger }: { onLandslideTrigger?: (i
   const [scanProgress, setScanProgress] = useState(0);
   const [deployedCount, setDeployedCount] = useState(0);
 
-  useEffect(() => {
-    if (onLandslideTrigger) {
-      onLandslideTrigger(isTriggered);
-    }
-    if (isTriggered) {
-      setIs3D(true);
-    }
-  }, [isTriggered, onLandslideTrigger]);
+    useEffect(() => {
+      if (onLandslideTrigger) {
+        onLandslideTrigger(isTriggered);
+      }
+    }, [isTriggered, onLandslideTrigger]);
 
   useEffect(() => {
     setMapLoaded(true);
