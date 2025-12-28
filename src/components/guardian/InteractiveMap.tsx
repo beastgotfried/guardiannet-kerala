@@ -132,8 +132,14 @@ function AssetMarkers({
   );
 }
 
-export function InteractiveMap() {
+export function InteractiveMap({ onLandslideTrigger }: { onLandslideTrigger?: (isTriggered: boolean) => void }) {
   const [isTriggered, setIsTriggered] = useState(false);
+
+  useEffect(() => {
+    if (onLandslideTrigger) {
+      onLandslideTrigger(isTriggered);
+    }
+  }, [isTriggered, onLandslideTrigger]);
   const [activeAssets, setActiveAssets] = useState<number[]>([]);
   const [selectedAsset, setSelectedAsset] = useState<Asset | null>(null);
   const [showHeatmap, setShowHeatmap] = useState(true);
