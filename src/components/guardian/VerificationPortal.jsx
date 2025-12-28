@@ -230,93 +230,126 @@ export function VerificationPortal({ isOpen, onClose }) {
             )}
 
             {step === "success" && (
-              <motion.div 
-                key="id-card"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="space-y-6"
-              >
-                {/* Success Animation */}
-                <div className="flex flex-col items-center justify-center space-y-2">
-                  <motion.div 
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600"
-                  >
-                    <CheckCircle className="w-10 h-10" />
-                  </motion.div>
-                  <h3 className="text-xl font-bold text-slate-800">Verification Successful</h3>
-                  <p className="text-sm text-slate-500">Your digital ID has been generated.</p>
-                </div>
+                <motion.div 
+                  key="id-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-6"
+                >
+                  {/* Success Animation */}
+                  <div className="flex flex-col items-center justify-center space-y-2">
+                    <motion.div 
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600"
+                    >
+                      <CheckCircle className="w-10 h-10" />
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-slate-800">Verification Successful</h3>
+                    <p className="text-sm text-slate-500">Official registry entry found and validated.</p>
+                  </div>
 
-                {/* Digital ID Card */}
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-slate-600 rounded-2xl blur opacity-25" />
-                  <div className="relative bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xl">
-                    {/* ID Header */}
-                    <div className="bg-slate-600 p-4 text-white flex justify-between items-start">
-                      <div className="flex items-center gap-2">
-                        <ShieldCheck className="w-5 h-5 text-emerald-400" />
-                        <span className="text-[10px] font-bold uppercase tracking-widest">Official Responder ID</span>
+                  {/* Digital ID Card */}
+                  <div className="relative group">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-slate-600 rounded-2xl blur opacity-25" />
+                    <div className="relative bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-xl">
+                      {/* ID Header */}
+                      <div className="bg-slate-600 p-4 text-white flex justify-between items-start">
+                        <div className="flex items-center gap-2">
+                          <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                          <span className="text-[10px] font-bold uppercase tracking-widest">Official Responder ID</span>
+                        </div>
+                        <div className="px-2 py-0.5 rounded bg-emerald-500 text-[8px] font-bold uppercase tracking-wider">
+                          Verified
+                        </div>
                       </div>
-                      <div className="px-2 py-0.5 rounded bg-emerald-500 text-[8px] font-bold uppercase tracking-wider">
-                        Verified
-                      </div>
-                    </div>
 
-                    <div className="p-6 flex gap-6">
-                      <div className="w-24 h-24 rounded-xl bg-slate-100 flex-shrink-0 flex items-center justify-center border border-slate-200">
-                        <User className="w-12 h-12 text-slate-300" />
-                      </div>
-                      <div className="flex-1 space-y-3">
-                        <div>
-                          <p className="text-[8px] uppercase tracking-widest text-slate-400 font-bold">Full Name</p>
-                          <p className="text-sm font-bold text-slate-800 uppercase">{formData.fullName}</p>
+                      <div className="p-6 flex gap-6">
+                        <div className="w-24 h-24 rounded-xl bg-slate-100 flex-shrink-0 flex items-center justify-center border border-slate-200">
+                          <User className="w-12 h-12 text-slate-300" />
                         </div>
-                        <div>
-                          <p className="text-[8px] uppercase tracking-widest text-slate-400 font-bold">Role / Skill</p>
-                          <p className="text-sm font-bold text-slate-800 uppercase">
-                            {SKILL_CATEGORIES.find(s => s.id === formData.skill)?.label}
-                          </p>
-                        </div>
-                        <div className="flex gap-4">
+                        <div className="flex-1 space-y-3">
                           <div>
-                            <p className="text-[8px] uppercase tracking-widest text-slate-400 font-bold">District</p>
-                            <p className="text-[10px] font-bold text-slate-700">Wayanad</p>
+                            <p className="text-[8px] uppercase tracking-widest text-slate-400 font-bold">Full Name</p>
+                            <p className="text-sm font-bold text-slate-800 uppercase">{verifiedUser?.name || formData.fullName}</p>
                           </div>
-                          <div>
-                            <p className="text-[8px] uppercase tracking-widest text-slate-400 font-bold">Exp Date</p>
-                            <p className="text-[10px] font-bold text-slate-700">12/2026</p>
+                          <div className="grid grid-cols-2 gap-2">
+                            <div>
+                              <p className="text-[8px] uppercase tracking-widest text-slate-400 font-bold">Role / Skill</p>
+                              <p className="text-[10px] font-bold text-slate-800 uppercase">
+                                {SKILL_CATEGORIES.find(s => s.id === (verifiedUser?.skill || formData.skill))?.label}
+                              </p>
+                            </div>
+                            <div>
+                              <p className="text-[8px] uppercase tracking-widest text-slate-400 font-bold">Organization</p>
+                              <p className="text-[10px] font-bold text-slate-800 uppercase">
+                                {verifiedUser?.org || "KSDMA"}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="flex gap-4 pt-1">
+                            <div>
+                              <p className="text-[8px] uppercase tracking-widest text-slate-400 font-bold">District</p>
+                              <p className="text-[10px] font-bold text-slate-700">Wayanad</p>
+                            </div>
+                            <div>
+                              <p className="text-[8px] uppercase tracking-widest text-slate-400 font-bold">Exp Date</p>
+                              <p className="text-[10px] font-bold text-slate-700">12/2026</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="flex-shrink-0">
-                        <div className="p-2 border border-slate-100 rounded-lg bg-slate-50">
-                          <QrCode className="w-16 h-16 text-slate-800" />
+                        <div className="flex-shrink-0">
+                          <div className="p-2 border border-slate-100 rounded-lg bg-slate-50">
+                            <QrCode className="w-16 h-16 text-slate-800" />
+                          </div>
+                          <p className="text-[6px] text-center mt-1 text-slate-400 font-mono">ID: {verifiedUser?.id || formData.idNumber}</p>
                         </div>
-                        <p className="text-[6px] text-center mt-1 text-slate-400 font-mono">ID: {formData.idNumber}</p>
                       </div>
-                    </div>
 
-                    {/* Verified Stamp */}
-                    <div className="absolute bottom-4 right-24 rotate-[-15deg] opacity-10 pointer-events-none">
-                      <div className="border-4 border-emerald-600 rounded-xl px-4 py-1 text-emerald-600 font-black text-2xl uppercase tracking-tighter">
-                        Verified
+                      {/* Verified Stamp */}
+                      <div className="absolute bottom-4 right-24 rotate-[-15deg] opacity-10 pointer-events-none">
+                        <div className="border-4 border-emerald-600 rounded-xl px-4 py-1 text-emerald-600 font-black text-2xl uppercase tracking-tighter">
+                          Verified
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                  <button className="flex items-center justify-center gap-2 py-3 rounded-xl border border-slate-200 text-slate-600 text-sm font-bold hover:bg-slate-50 transition-all">
-                    <Download className="w-4 h-4" /> Save to Device
+                  <div className="grid grid-cols-2 gap-3">
+                    <button className="flex items-center justify-center gap-2 py-3 rounded-xl border border-slate-200 text-slate-600 text-sm font-bold hover:bg-slate-50 transition-all">
+                      <Download className="w-4 h-4" /> Save to Device
+                    </button>
+                    <button className="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-500 text-white text-sm font-bold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-100">
+                      <Share2 className="w-4 h-4" /> Share ID
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+
+              {step === "error" && (
+                <motion.div 
+                  key="error"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="py-8 flex flex-col items-center justify-center text-center space-y-6"
+                >
+                  <div className="w-20 h-20 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                    <AlertCircle className="w-10 h-10" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-bold text-slate-800">Verification Failed</h3>
+                    <p className="text-slate-500 max-w-xs mx-auto text-sm">
+                      Could not find a matching record in the {SKILL_CATEGORIES.find(s => s.id === formData.skill)?.org} official registry.
+                    </p>
+                  </div>
+                  <button 
+                    onClick={() => setStep("form")}
+                    className="px-8 py-3 rounded-xl bg-slate-800 text-white font-bold hover:bg-slate-900 transition-all"
+                  >
+                    Try Again
                   </button>
-                  <button className="flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-500 text-white text-sm font-bold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-100">
-                    <Share2 className="w-4 h-4" /> Share ID
-                  </button>
-                </div>
-              </motion.div>
-            )}
+                </motion.div>
+              )}
           </AnimatePresence>
         </div>
       </motion.div>
