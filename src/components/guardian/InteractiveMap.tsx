@@ -361,65 +361,19 @@ export function InteractiveMap({ onLandslideTrigger }: { onLandslideTrigger?: (i
                 </div>
               </div>
 
-              <div className="h-[500px] relative">
-                {mapLoaded && typeof window !== "undefined" && (
-                  <MapContainer
-                    center={WAYANAD_CENTER}
-                    zoom={12}
-                    style={{ height: "100%", width: "100%" }}
-                    zoomControl={false}
-                    attributionControl={false}
-                  >
-                    <TileLayer
-                      url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-                    />
-                    
-                    {showHeatmap && RISK_ZONES.map((zone, idx) => (
-                      <Circle
-                        key={idx}
-                        center={zone.center}
-                        radius={zone.radius}
-                        pathOptions={{
-                          fillColor: getRiskColor(zone.level).fill,
-                          fillOpacity: isTriggered && zone.level === "critical" ? 0.4 : 0.15,
-                          color: getRiskColor(zone.level).stroke,
-                          weight: 2,
-                        }}
-                      />
-                    ))}
-
-                    {isTriggered && activeAssets.length > 1 && (
-                      <Polyline
-                        positions={ASSETS.filter(a => activeAssets.includes(a.id)).map(a => a.location)}
-                        pathOptions={{
-                          color: "#22c55e",
-                          weight: 2,
-                          dashArray: "10, 10",
-                          opacity: 0.6,
-                        }}
-                      />
-                    )}
-
-                    <AssetMarkers 
-                      assets={ASSETS}
-                      activeAssets={activeAssets}
-                      setSelectedAsset={setSelectedAsset}
-                      getAssetIcon={getAssetIcon}
-                    />
-                  </MapContainer>
-                )}
-
-                {isTriggered && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ zIndex: 999 }}
-                  >
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-red-500/20 blur-3xl animate-pulse" />
-                  </motion.div>
-                )}
+                  {isTriggered && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="absolute inset-0 pointer-events-none"
+                      style={{ zIndex: 999 }}
+                    >
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-red-500/20 blur-3xl animate-pulse" />
+                    </motion.div>
+                  )}
+                </div>
               </div>
+            </div>
 
               <div className="absolute bottom-0 left-0 right-0 z-[1000] p-4 bg-gradient-to-t from-black/90 to-transparent">
                 <div className="flex items-center justify-between">
