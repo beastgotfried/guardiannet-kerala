@@ -80,7 +80,7 @@ export function AssetGrid() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section id="technology" className="py-32 relative overflow-hidden">
       <div className="absolute inset-0 topographic-bg opacity-30" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-[200px]" />
       
