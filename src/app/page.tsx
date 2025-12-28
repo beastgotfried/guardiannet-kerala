@@ -444,39 +444,33 @@ export default function Home() {
                   <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.resources}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
                     <li>
-                      <a 
-                        href="https://timesofindia.indiatimes.com/topic/wayanad-floods" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="hover:text-primary transition-colors"
+                      <button 
+                        onClick={() => handleExternalLink("https://timesofindia.indiatimes.com/topic/wayanad-floods")}
+                        className="hover:text-primary transition-colors text-left"
                       >
                         {t.footer.links.documentation}
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a href="#" className="hover:text-primary transition-colors">
+                      <button className="hover:text-primary transition-colors text-left">
                         {t.footer.links.apiAccess}
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a 
-                        href="https://sdma.kerala.gov.in/" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="hover:text-primary transition-colors"
+                      <button 
+                        onClick={() => handleExternalLink("https://sdma.kerala.gov.in/")}
+                        className="hover:text-primary transition-colors text-left"
                       >
                         {t.footer.links.ksdmaPortal}
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a 
-                        href="https://sdma.kerala.gov.in/emergency-contacts/" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="hover:text-primary transition-colors"
+                      <button 
+                        onClick={() => handleExternalLink("https://sdma.kerala.gov.in/emergency-contacts/")}
+                        className="hover:text-primary transition-colors text-left"
                       >
                         {t.footer.links.emergencyContacts}
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
