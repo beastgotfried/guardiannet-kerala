@@ -307,8 +307,9 @@ export function VerificationPortal({ isOpen, onClose }) {
                       </div>
 
                       {/* Verified Stamp */}
-                      <div className="absolute bottom-4 right-24 rotate-[-15deg] opacity-10 pointer-events-none">
-                        <div className="border-4 border-emerald-600 rounded-xl px-4 py-1 text-emerald-600 font-black text-2xl uppercase tracking-tighter">
+                      <div className="absolute bottom-6 right-20 rotate-[-20deg] opacity-20 pointer-events-none">
+                        <div className="border-8 border-emerald-600/30 rounded-2xl px-6 py-2 text-emerald-600/40 font-black text-4xl uppercase tracking-tighter flex items-center gap-2">
+                          <CheckCircle className="w-8 h-8" />
                           Verified
                         </div>
                       </div>
