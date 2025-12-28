@@ -122,10 +122,12 @@ export const translations = {
         victims: "लोग फंसे हुए हैं"
       }
     },
-    footer: {
+      footer: {
       platform: "प्लेटफार्म",
       regions: "क्षेत्र",
       resources: "संसाधन",
+      platformItems: ["संपत्ति मानचित्रण", "मेश नेटवर्किंग", "कौशल सत्यापन", "शिविर प्रबंधन"],
+      regionItems: ["वायनाड", "इडुक्की", "पालक्कड़", "कोझिकोड", "मलप्पुरम"],
       links: {
         documentation: "दस्तावेज़",
         apiAccess: "API एक्सेस",
