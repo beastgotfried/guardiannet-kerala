@@ -8,6 +8,7 @@ import {
   Crosshair, Layers, TriangleAlert
 } from "lucide-react";
 import dynamic from "next/dynamic";
+import { useMap } from "react-leaflet";
 
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
