@@ -124,12 +124,12 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-6xl md:text-8xl lg:text-9xl font-black tracking-[-0.04em] mb-10 leading-[0.9]"
           >
-            <span className="text-white drop-shadow-[0_10px_30px_rgba(255,255,255,0.1)]">
+            <span className="text-white drop-shadow-[0_10px_30px_rgba(255,255,255,0.2)]">
               {t.hero.title1}
             </span>
             <br />
             <span className="relative">
-              <span className="text-primary italic drop-shadow-[0_0_30px_rgba(var(--primary),0.3)]">{t.hero.title2}</span>
+              <span className="text-primary italic drop-shadow-[0_0_40px_rgba(var(--primary),0.4)]">{t.hero.title2}</span>
             </span>
           </motion.h1>
           
@@ -137,7 +137,7 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto mb-16 leading-relaxed font-medium"
+            className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto mb-16 leading-relaxed font-medium drop-shadow-sm"
           >
             {t.hero.subtitle}
             <span className="text-primary font-bold border-b-2 border-primary/30 pb-1 ml-1">{t.hero.subtitleHighlight}</span>.
@@ -189,7 +189,7 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
                 <p className="text-4xl font-black mb-2 text-white">
                   {stat.value}<span className="text-primary">{stat.suffix}</span>
                 </p>
-                <p className="text-[10px] text-white/40 font-black uppercase tracking-[0.2em]">{stat.label}</p>
+                <p className="text-[10px] text-white/50 font-black uppercase tracking-[0.2em]">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -204,7 +204,7 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="flex flex-col items-center gap-3 text-white/20"
+            className="flex flex-col items-center gap-3 text-white/30"
           >
             <span className="text-[10px] font-black uppercase tracking-[0.3em]">{t.hero.scroll}</span>
             <ChevronDown className="w-6 h-6" />
