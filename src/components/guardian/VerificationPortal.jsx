@@ -8,7 +8,7 @@ import {
   X, Briefcase, Fingerprint, Search,
   ArrowRight, ShieldCheck, MapPin,
   Calendar, Check, Download, Share2, AlertCircle,
-  Building2, Globe, Database
+  Building2, Globe, Database, Award
 } from "lucide-react";
 import registryData from "../../lib/data/verified_registry.json";
 
