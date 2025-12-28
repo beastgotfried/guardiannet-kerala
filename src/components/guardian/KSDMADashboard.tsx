@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -441,7 +440,7 @@ export function KSDMADashboard() {
                       >
                         <div className={`p-2 rounded-lg ${
                           alert.type === "critical" ? "bg-red-500/20 text-red-400" :
-                          alert.type === "warning" ? "bg-yellow-500/20 text-yellow-400" :
+                          alert.type === "warning" ? "bg-yellow-500/10 text-yellow-400" :
                           "bg-primary/20 text-primary"
                         }`}>
                           {alert.type === "critical" ? (
