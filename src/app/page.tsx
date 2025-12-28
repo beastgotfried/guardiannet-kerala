@@ -419,7 +419,7 @@ export default function Home() {
                 <div>
                   <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.platform}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
-                    {["Asset Mapping", "Mesh Networking", "Skill Verification", "Camp Management"].map((item) => (
+                    {t.footer.platformItems.map((item) => (
                       <li key={item}>
                         <a href="#" className="hover:text-primary transition-colors">{item}</a>
                       </li>
@@ -429,7 +429,7 @@ export default function Home() {
                 <div>
                   <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.regions}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
-                    {["Wayanad", "Idukki", "Palakkad", "Kozhikode", "Malappuram"].map((item) => (
+                    {t.footer.regionItems.map((item) => (
                       <li key={item}>
                         <a href="#" className="hover:text-primary transition-colors">{item}</a>
                       </li>
