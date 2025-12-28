@@ -4,6 +4,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Shield, MapPin, Zap, Mountain, Wifi, Users, ChevronDown } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 
+interface HeroProps {
+  onGetStarted?: () => void;
+  onViewMap?: () => void;
+}
+
 function ParticleField() {
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; size: number; delay: number }>>([]);
   
@@ -72,7 +77,7 @@ const STATS = [
   { icon: Wifi, value: "98.7", label: "Network Uptime", suffix: "%" },
 ];
 
-export function Hero() {
+export function Hero({ onGetStarted, onViewMap }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -148,6 +153,7 @@ export function Hero() {
             className="flex flex-wrap justify-center gap-4 mb-16"
           >
             <motion.button 
+              onClick={onGetStarted}
               whileHover={{ scale: 1.02, boxShadow: "0 20px 40px -10px rgba(120, 200, 120, 0.3)" }}
               whileTap={{ scale: 0.98 }}
               className="px-10 py-5 rounded-2xl bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-bold text-lg flex items-center gap-3 shadow-xl shadow-primary/20"
@@ -156,6 +162,7 @@ export function Hero() {
               <Zap className="w-5 h-5" />
             </motion.button>
             <motion.button 
+              onClick={onViewMap}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="px-10 py-5 rounded-2xl glass-card font-bold text-lg flex items-center gap-3 hover:bg-white/10 transition-all"
