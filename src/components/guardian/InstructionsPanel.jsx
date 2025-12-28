@@ -3,7 +3,22 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Shield, Battery, Navigation, Radio, Camera, AlertOctagon, Drill, HeartPulse, HardHat, Info } from "lucide-react";
+import { 
+  Shield, 
+  Battery, 
+  Navigation, 
+  Radio, 
+  Camera, 
+  AlertOctagon, 
+  Drill, 
+  HeartPulse, 
+  HardHat, 
+  Info, 
+  Wind, 
+  Users2, 
+  Dog, 
+  Network 
+} from "lucide-react";
 
 const InstructionSection = ({ icon: Icon, title, items, color = "primary" }) => (
   <motion.div 
@@ -57,25 +72,30 @@ export const InstructionsPanel = () => {
     },
     {
       icon: AlertOctagon,
-      title: "Emergency Protocol",
+      title: "Emergency & Recovery",
       color: "red",
       items: [
-        { label: "Loss of Comms", content: "If internet/cellular fails, switch to Bluetooth Mesh Mode on the app or physically report to the nearest Green Zone Assembly Point marked on your offline map." }
+        { label: "Loss of Comms", content: "If internet/cellular fails, switch to Bluetooth Mesh Mode on the app or physically report to the nearest Green Zone Assembly Point." },
+        { label: "Secondary Slides", content: "If ground tremors or 'cracking' sounds are heard, initiate immediate 2-minute whistle blast. All personnel must move to high ground immediately." },
+        { label: "Mental Health", content: "If a responder shows signs of acute distress, escort them to the Zone 3 Support Hub. Compassion is part of our resilience." },
+        { label: "Livestock/Pets", content: "Report animal sightings to the Animal Husbandry unit. Do not attempt rescue if it compromises human safety zones." },
+        { label: "Mesh Handover", content: "When moving between zones, ensure your device handshakes with the new Zone Command node to maintain the decentralized grid." }
       ]
     }
   ];
 
   return (
     <section id="protocols" className="py-24 relative overflow-hidden">
-      <div className="container mx-auto px-4">
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 blur-[120px] rounded-full" />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-4">
               <Info className="w-3 h-3" />
-              Field Manual
+              Operational protocols
             </div>
-            <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter mb-4">
-              OPERATIONAL <span className="text-primary">PROTOCOLS</span>
+            <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter mb-4 uppercase">
+              Field <span className="text-primary">Manual</span>
             </h2>
             <p className="text-foreground/60 leading-relaxed">
               Standard operating procedures for all GuardianNet units. Failure to follow these 
