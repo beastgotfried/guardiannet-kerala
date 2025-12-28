@@ -5,6 +5,7 @@ import { InteractiveMap } from "@/components/guardian/InteractiveMap";
 import { AssetGrid } from "@/components/guardian/AssetGrid";
 import { KSDMADashboard } from "@/components/guardian/KSDMADashboard";
 import { AIAssistant } from "@/components/guardian/AIAssistant";
+import { VerificationPortal } from "@/components/guardian/VerificationPortal";
 import { Shield, Menu, Github, ExternalLink, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -13,6 +14,7 @@ import Head from "next/head";
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isPortalOpen, setIsPortalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,15 +73,15 @@ export default function Home() {
                 </motion.a>
               ))}
               <div className="w-px h-6 bg-white/10 mx-2" />
-              <motion.a 
-                href="#"
+              <motion.button 
+                onClick={() => setIsPortalOpen(true)}
                 className="px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm flex items-center gap-2 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Volunteer
                 <ExternalLink className="w-4 h-4" />
-              </motion.a>
+              </motion.button>
             </div>
 
             <div className="flex items-center gap-3 md:hidden">
@@ -110,12 +112,15 @@ export default function Home() {
                       {item}
                     </a>
                   ))}
-                  <a 
-                    href="#"
-                    className="block px-4 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm text-center mt-4"
+                  <button 
+                    onClick={() => {
+                      setIsPortalOpen(true);
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full px-4 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm text-center mt-4"
                   >
                     Volunteer Now
-                  </a>
+                  </button>
                 </div>
               </motion.div>
             )}
@@ -127,6 +132,11 @@ export default function Home() {
         <AssetGrid />
         <KSDMADashboard />
         <AIAssistant />
+
+        <VerificationPortal 
+          isOpen={isPortalOpen} 
+          onClose={() => setIsPortalOpen(false)} 
+        />
 
         <footer className="py-24 border-t border-white/5 bg-gradient-to-t from-secondary/20 to-transparent relative overflow-hidden">
           <div className="absolute inset-0 topographic-bg opacity-20" />
