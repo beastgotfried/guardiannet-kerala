@@ -202,10 +202,10 @@ export default function Home() {
               >
                 <div className="container mx-auto px-4 py-6 space-y-2">
                   {[
-                    { name: "Technology", id: "technology" },
-                    { name: "KSDMA", id: "ksdma" },
-                    { name: "Kerala Context", id: "#" },
-                    { name: "About", id: "#" }
+                    { name: t.nav.technology, id: "technology" },
+                    { name: t.nav.ksdma, id: "ksdma" },
+                    { name: t.nav.keralaContext, id: "#" },
+                    { name: t.nav.about, id: "#" }
                   ].map((item) => (
                     <a 
                       key={item.name}
@@ -221,6 +221,30 @@ export default function Home() {
                       {item.name}
                     </a>
                   ))}
+
+                  <div className="flex items-center gap-2 p-4 bg-white/5 rounded-xl border border-white/5 mt-4">
+                    {[
+                      { code: 'en', label: 'English' },
+                      { code: 'hi', label: 'हिंदी' },
+                      { code: 'ml', label: 'മലയാളം' }
+                    ].map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => {
+                          setLanguage(lang.code as any);
+                          setMobileMenuOpen(false);
+                        }}
+                        className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${
+                          language === lang.code 
+                            ? "bg-primary text-primary-foreground" 
+                            : "text-foreground/40"
+                        }`}
+                      >
+                        {lang.label}
+                      </button>
+                    ))}
+                  </div>
+
                   <button 
                     onClick={() => {
                       setIsPortalOpen(true);
@@ -228,7 +252,7 @@ export default function Home() {
                     }}
                     className="w-full px-4 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm text-center mt-4"
                   >
-                    Volunteer Now
+                    {t.nav.volunteerNow}
                   </button>
                 </div>
               </motion.div>
