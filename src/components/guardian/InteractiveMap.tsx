@@ -262,17 +262,102 @@ export function InteractiveMap({ onLandslideTrigger }: { onLandslideTrigger?: (i
                       </motion.div>
                     )}
                   </div>
-                  <div className="flex items-center gap-2">
-                    <button 
-                      onClick={() => setShowHeatmap(!showHeatmap)}
-                      className={`p-2 rounded-lg transition-all ${showHeatmap ? "bg-primary/20 text-primary" : "bg-white/10 text-white/60"}`}
-                    >
-                      <Layers className="w-4 h-4" />
-                    </button>
-                    <button className="p-2 rounded-lg bg-white/10 text-white/60 hover:text-white transition-all">
-                      <Crosshair className="w-4 h-4" />
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <button 
+                        onClick={() => setMapType(mapType === "dark" ? "topo" : "dark")}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${
+                          mapType === "topo" ? "bg-primary/20 text-primary border border-primary/30" : "bg-white/10 text-white/60 hover:text-white"
+                        }`}
+                      >
+                        <Layers className="w-3.5 h-3.5" />
+                        {mapType === "dark" ? "DARK" : "TOPO"}
+                      </button>
+                      <button 
+                        onClick={() => setIs3D(!is3D)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-2 ${
+                          is3D ? "bg-primary/20 text-primary border border-primary/30" : "bg-white/10 text-white/60 hover:text-white"
+                        }`}
+                      >
+                        <div className={`w-3.5 h-3.5 border-2 ${is3D ? "border-primary" : "border-current"} rounded-sm rotate-45 transform-gpu`} />
+                        3D
+                      </button>
+                      <button 
+                        onClick={() => setShowHeatmap(!showHeatmap)}
+                        className={`p-2 rounded-lg transition-all ${showHeatmap ? "bg-primary/20 text-primary" : "bg-white/10 text-white/60"}`}
+                      >
+                        <Layers className="w-4 h-4" />
+                      </button>
+                      <button className="p-2 rounded-lg bg-white/10 text-white/60 hover:text-white transition-all">
+                        <Crosshair className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
+                </div>
+
+                <div 
+                  className="h-[500px] relative perspective-1000 overflow-hidden"
+                  style={{ perspective: "1200px" }}
+                >
+                  <motion.div 
+                    animate={{ 
+                      rotateX: is3D ? 35 : 0,
+                      rotateZ: is3D ? -5 : 0,
+                      scale: is3D ? 1.1 : 1,
+                      y: is3D ? 20 : 0
+                    }}
+                    transition={{ type: "spring", stiffness: 50, damping: 20 }}
+                    className="w-full h-full origin-bottom"
+                  >
+                    {mapLoaded && typeof window !== "undefined" && (
+                      <MapContainer
+                        center={WAYANAD_CENTER}
+                        zoom={12}
+                        style={{ height: "100%", width: "100%" }}
+                        zoomControl={false}
+                        attributionControl={false}
+                      >
+                        <TileLayer
+                          url={mapType === "dark" 
+                            ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                            : "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
+                          }
+                        />
+                        
+                        {showHeatmap && RISK_ZONES.map((zone, idx) => (
+                          <Circle
+                            key={idx}
+                            center={zone.center}
+                            radius={zone.radius}
+                            pathOptions={{
+                              fillColor: getRiskColor(zone.level).fill,
+                              fillOpacity: isTriggered && zone.level === "critical" ? 0.4 : 0.15,
+                              color: getRiskColor(zone.level).stroke,
+                              weight: 2,
+                            }}
+                          />
+                        ))}
+
+                        {isTriggered && activeAssets.length > 1 && (
+                          <Polyline
+                            positions={ASSETS.filter(a => activeAssets.includes(a.id)).map(a => a.location)}
+                            pathOptions={{
+                              color: "#22c55e",
+                              weight: 2,
+                              dashArray: "10, 10",
+                              opacity: 0.6,
+                            }}
+                          />
+                        )}
+
+                        <AssetMarkers 
+                          assets={ASSETS}
+                          activeAssets={activeAssets}
+                          setSelectedAsset={setSelectedAsset}
+                          getAssetIcon={getAssetIcon}
+                        />
+                      </MapContainer>
+                    )}
+                  </motion.div>
                 </div>
               </div>
 
