@@ -84,11 +84,11 @@ function AssetMarkers({
   }, [map]);
 
   return (
-    <div className="leaflet-pane leaflet-marker-pane" style={{ zIndex: 1000 }}>
+    <div className="absolute inset-0 z-[1000] pointer-events-none overflow-hidden">
       <AnimatePresence>
         {assets.map((asset) => {
           const isActive = activeAssets.includes(asset.id);
-          const point = map.latLngToLayerPoint(asset.location);
+          const point = map.latLngToContainerPoint(asset.location);
           
           return (
             <motion.div
