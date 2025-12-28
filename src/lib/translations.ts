@@ -184,6 +184,17 @@ export const translations = {
         distance: "ലക്ഷ്യത്തിലേക്കുള്ള ദൂരം",
         victims: "ആളുകൾ കുടുങ്ങിക്കിടക്കുന്നു"
       }
+    },
+    footer: {
+      platform: "പ്ലാറ്റ്‌ഫോം",
+      regions: "മേഖലകൾ",
+      resources: "വിഭവങ്ങൾ",
+      links: {
+        documentation: "ഡോക്യുമെന്റേഷൻ",
+        apiAccess: "API ആക്സസ്",
+        ksdmaPortal: "KSDMA പോർട്ടൽ",
+        emergencyContacts: "അടിയന്തര സമ്പർക്കം"
+      }
     }
   }
 };
