@@ -349,17 +349,16 @@ export function InteractiveMap({ onLandslideTrigger }: { onLandslideTrigger?: (i
                           />
                         )}
 
-                        <AssetMarkers 
-                          assets={ASSETS}
-                          activeAssets={activeAssets}
-                          setSelectedAsset={setSelectedAsset}
-                          getAssetIcon={getAssetIcon}
-                        />
-                      </MapContainer>
-                    )}
-                  </motion.div>
-                </div>
-              </div>
+                          <AssetMarkers 
+                            assets={ASSETS}
+                            activeAssets={activeAssets}
+                            setSelectedAsset={setSelectedAsset}
+                            getAssetIcon={getAssetIcon}
+                          />
+                        </MapContainer>
+                      )}
+                    </motion.div>
+                  </div>
 
                   {isTriggered && (
                     <motion.div
@@ -371,44 +370,41 @@ export function InteractiveMap({ onLandslideTrigger }: { onLandslideTrigger?: (i
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-red-500/20 blur-3xl animate-pulse" />
                     </motion.div>
                   )}
-                </div>
-              </div>
-            </div>
 
-              <div className="absolute bottom-0 left-0 right-0 z-[1000] p-4 bg-gradient-to-t from-black/90 to-transparent">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-6">
-                    <div>
-                      <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Active Assets</p>
-                      <p className="text-2xl font-bold text-primary">{deployedCount}<span className="text-sm text-white/40">/{ASSETS.length}</span></p>
-                    </div>
-                    <div>
-                      <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Golden Hour</p>
-                      <p className="text-2xl font-bold text-accent">5km<span className="text-sm text-white/40"> radius</span></p>
-                    </div>
-                    <div>
-                      <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Elevation</p>
-                      <p className="text-2xl font-bold">1,200<span className="text-sm text-white/40">m</span></p>
+                  <div className="absolute bottom-0 left-0 right-0 z-[1000] p-4 bg-gradient-to-t from-black/90 to-transparent">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-6">
+                        <div>
+                          <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Active Assets</p>
+                          <p className="text-2xl font-bold text-primary">{deployedCount}<span className="text-sm text-white/40">/{ASSETS.length}</span></p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Golden Hour</p>
+                          <p className="text-2xl font-bold text-accent">5km<span className="text-sm text-white/40"> radius</span></p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Elevation</p>
+                          <p className="text-2xl font-bold">1,200<span className="text-sm text-white/40">m</span></p>
+                        </div>
+                      </div>
+                      {isTriggered && scanProgress < 100 && (
+                        <div className="w-32">
+                          <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Scanning</p>
+                          <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                            <motion.div 
+                              className="h-full bg-primary"
+                              initial={{ width: 0 }}
+                              animate={{ width: `${scanProgress}%` }}
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
-                  {isTriggered && scanProgress < 100 && (
-                    <div className="w-32">
-                      <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1">Scanning</p>
-                      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                        <motion.div 
-                          className="h-full bg-primary"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${scanProgress}%` }}
-                        />
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div className="space-y-6">
+              <div className="space-y-6">
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
