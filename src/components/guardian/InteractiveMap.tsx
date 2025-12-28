@@ -35,6 +35,11 @@ const Polyline = dynamic(
   { ssr: false }
 );
 
+const Pane = dynamic(
+  () => import("react-leaflet").then((mod) => mod.Pane),
+  { ssr: false }
+);
+
 const WAYANAD_CENTER: [number, number] = [11.6854, 76.1320];
 
 interface Asset {
