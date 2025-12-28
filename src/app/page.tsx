@@ -249,6 +249,12 @@ export default function Home() {
           onClose={() => setIsPortalOpen(false)} 
         />
 
+        <AnimatePresence>
+          {isVolunteerViewOpen && (
+            <VolunteerView onClose={() => setIsVolunteerViewOpen(false)} />
+          )}
+        </AnimatePresence>
+
         <footer className="py-24 border-t border-white/5 bg-gradient-to-t from-secondary/20 to-transparent relative overflow-hidden">
           <div className="absolute inset-0 topographic-bg opacity-20" />
           <div className="container mx-auto px-4 relative z-10">
