@@ -92,8 +92,8 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-background" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/15 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/3" />
       
       <ParticleField />
@@ -109,11 +109,13 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 text-sm font-medium mb-8">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-sm font-bold mb-10 shadow-2xl backdrop-blur-xl">
               <Shield className="w-5 h-5 text-primary" />
-              <span className="text-foreground/80">GuardianNet: Kerala Edition</span>
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-green-400 text-xs font-bold">LIVE</span>
+              <span className="text-white/90 tracking-widest uppercase text-[10px]">GuardianNet: Kerala Edition</span>
+              <div className="flex items-center gap-2 border-l border-white/10 pl-3 ml-1">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-green-400 text-[10px] font-black tracking-tighter">NODE-01 ACTIVE</span>
+              </div>
             </div>
           </motion.div>
           
@@ -121,20 +123,14 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8"
+            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-[ -0.04em] mb-10 leading-[0.9]"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/40">
+            <span className="text-white drop-shadow-[0_10px_30px_rgba(255,255,255,0.1)]">
               {t.hero.title1}
             </span>
             <br />
             <span className="relative">
-              <span className="text-primary italic">{t.hero.title2}</span>
-              <motion.span
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
-              />
+              <span className="text-primary italic drop-shadow-[0_0_30px_rgba(var(--primary),0.3)]">{t.hero.title2}</span>
             </span>
           </motion.h1>
           
@@ -142,43 +138,43 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-foreground/50 max-w-3xl mx-auto mb-12 leading-relaxed"
+            className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto mb-16 leading-relaxed font-medium"
           >
             {t.hero.subtitle}
-            <span className="text-primary font-medium">{t.hero.subtitleHighlight}</span>.
+            <span className="text-primary font-bold border-b-2 border-primary/30 pb-1 ml-1">{t.hero.subtitleHighlight}</span>.
           </motion.p>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-wrap justify-center gap-4 mb-16"
+            className="flex flex-wrap justify-center gap-6 mb-20"
           >
             <motion.button 
               onClick={onGetStarted}
-              whileHover={{ scale: 1.02, boxShadow: "0 20px 40px -10px rgba(120, 200, 120, 0.3)" }}
-              whileTap={{ scale: 0.98 }}
-              className="px-10 py-5 rounded-2xl bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-bold text-lg flex items-center gap-3 shadow-xl shadow-primary/20"
+              whileHover={{ scale: 1.05, boxShadow: "0 25px 50px -12px rgba(var(--primary), 0.5)" }}
+              whileTap={{ scale: 0.95 }}
+              className="px-12 py-6 rounded-2xl bg-primary text-black font-black text-xl flex items-center gap-4 shadow-2xl shadow-primary/20 transition-all uppercase tracking-widest"
             >
               {t.hero.getStarted}
-              <Zap className="w-5 h-5" />
+              <Zap className="w-6 h-6" />
             </motion.button>
             <motion.button 
               onClick={onViewMap}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-10 py-5 rounded-2xl glass-card font-bold text-lg flex items-center gap-3 hover:bg-white/10 transition-all"
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
+              whileTap={{ scale: 0.95 }}
+              className="px-12 py-6 rounded-2xl border-2 border-white/10 font-black text-xl flex items-center gap-4 hover:bg-white/5 transition-all uppercase tracking-widest text-white/80"
             >
-              <MapPin className="w-5 h-5" />
+              <MapPin className="w-6 h-6" />
               {t.hero.viewMap}
             </motion.button>
           </motion.div>
-
+  
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="grid grid-cols-3 gap-6 max-w-2xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
           >
             {STATS.map((stat, i) => (
               <motion.div
@@ -186,31 +182,33 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 + i * 0.1 }}
-                className="glass-card rounded-2xl p-6 text-center group hover:border-primary/30 transition-all"
+                className="p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:border-primary/20 hover:bg-white/[0.05] transition-all group"
               >
-                <stat.icon className="w-6 h-6 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform" />
-                <p className="text-3xl font-bold mb-1">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all">
+                  <stat.icon className="w-6 h-6 text-primary" />
+                </div>
+                <p className="text-4xl font-black mb-2 text-white">
                   {stat.value}<span className="text-primary">{stat.suffix}</span>
                 </p>
-                <p className="text-xs text-foreground/40 uppercase tracking-widest">{stat.label}</p>
+                <p className="text-[10px] text-white/40 font-black uppercase tracking-[0.2em]">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
-
+  
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="flex flex-col items-center gap-2 text-foreground/30"
+            className="flex flex-col items-center gap-3 text-white/20"
           >
-            <span className="text-xs uppercase tracking-widest">{t.hero.scroll}</span>
-            <ChevronDown className="w-5 h-5" />
+            <span className="text-[10px] font-black uppercase tracking-[0.3em]">{t.hero.scroll}</span>
+            <ChevronDown className="w-6 h-6" />
           </motion.div>
         </motion.div>
       </motion.div>
