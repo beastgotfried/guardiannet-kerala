@@ -405,7 +405,52 @@ export default function Home() {
           {isVolunteerViewOpen && (
             <VolunteerView 
               onClose={() => setIsVolunteerViewOpen(false)} 
+              t={t}
+              language={language}
             />
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {showNotification && (
+            <motion.div 
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 100, opacity: 0 }}
+              className="fixed bottom-8 right-8 z-[100] w-full max-w-sm"
+            >
+              <div className="bg-red-600 border border-white/20 p-6 rounded-2xl shadow-2xl flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 animate-pulse">
+                  <AlertTriangle className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-white font-black text-lg mb-1 uppercase italic tracking-tight">CRITICAL ALERT</h3>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    Landslide event detected in <span className="text-white font-bold underline">Mundakkai/Chooralmala</span> sectors. Emergency protocols activated.
+                  </p>
+                  <div className="mt-4 flex gap-3">
+                    <button 
+                      onClick={() => {
+                        scrollToSection(null, "map");
+                        setShowNotification(false);
+                      }}
+                      className="bg-white text-red-600 px-4 py-2 rounded-lg text-xs font-bold uppercase hover:bg-white/90 transition-colors"
+                    >
+                      VIEW ON MAP
+                    </button>
+                    <button 
+                      onClick={() => setShowNotification(false)}
+                      className="text-white/60 text-xs font-bold uppercase px-2 hover:text-white transition-colors"
+                    >
+                      DISMISS
+                    </button>
+                  </div>
+                </div>
+                <button onClick={() => setShowNotification(false)}>
+                   <X className="w-4 h-4 text-white/40" />
+                </button>
+              </div>
+            </motion.div>
           )}
         </AnimatePresence>
 
