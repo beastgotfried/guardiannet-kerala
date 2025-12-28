@@ -1,0 +1,95 @@
+
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import { Shield, Battery, Navigation, Radio, Camera, AlertOctagon, Drill, HeartPulse, HardHat, Info } from "lucide-react";
+
+const InstructionSection = ({ icon: Icon, title, items, color = "primary" }) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    className={`p-6 rounded-[2rem] bg-white/5 border border-white/10 hover:border-${color}/30 transition-all group`}
+  >
+    <div className="flex items-center gap-4 mb-6">
+      <div className={`w-12 h-12 rounded-2xl bg-${color}/10 flex items-center justify-center text-${color} group-hover:scale-110 transition-transform`}>
+        <Icon className="w-6 h-6" />
+      </div>
+      <h3 className="text-xl font-bold tracking-tight">{title}</h3>
+    </div>
+    <ul className="space-y-4">
+      {items.map((item, idx) => (
+        <li key={idx} className="flex gap-4">
+          <div className={`w-1.5 h-1.5 rounded-full bg-${color} mt-2 flex-shrink-0`} />
+          <p className="text-foreground/70 text-sm leading-relaxed">
+            <span className="text-foreground font-bold">{item.label}:</span> {item.content}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </motion.div>
+);
+
+export const InstructionsPanel = () => {
+  const protocols = [
+    {
+      icon: Shield,
+      title: "General Safety & Protocol",
+      items: [
+        { label: "Safety First", content: "Do not enter unstable zones (Red Zones) without explicit clearance from Command. Your safety is the priority; do not become a second victim." },
+        { label: "Battery Discipline", content: "Keep your phone in 'Low Power Mode'. Only turn on GPS/Data when actively updating your status or navigating to a site." },
+        { label: "Status Updates", content: "Update your status to 'On-Site' immediately upon arrival. If you leave the zone, mark yourself as 'Offline' so we don't search for you." },
+        { label: "No Freelancing", content: "Only act on assigned tickets. Do not self-deploy to random locations; you may block access routes for heavy machinery." },
+        { label: "Privacy is Absolute", content: "Do not take or share photos of victims on social media. Use the in-app camera only for reporting damage to the Command Center." }
+      ]
+    },
+    {
+      icon: HardHat,
+      title: "Role-Specific Instructions",
+      color: "orange",
+      items: [
+        { label: "Drone Pilots", content: "Fly at 40-60 meters altitude to avoid helicopters. Prioritize thermal scanning for body heat over general video feeds. Return to home point at 25% battery." },
+        { label: "Heavy Machinery", content: "Prioritize clearing the main access road (Artery 1) before clearing individual debris. Wait for 'All Clear' from ground spotters before digging." },
+        { label: "Medical/Trauma", content: "Triage only. Stabilize and tag victims for transport. Do not attempt long-term treatment on-site; move green/yellow tags to the nearest collection point." },
+        { label: "Ham Radio", content: "Maintain silence on Emergency Channel 1. Only transmit situation reports (SITREPs) every 15 minutes or during immediate life-threats." }
+      ]
+    },
+    {
+      icon: AlertOctagon,
+      title: "Emergency Protocol",
+      color: "red",
+      items: [
+        { label: "Loss of Comms", content: "If internet/cellular fails, switch to Bluetooth Mesh Mode on the app or physically report to the nearest Green Zone Assembly Point marked on your offline map." }
+      ]
+    }
+  ];
+
+  return (
+    <section id="protocols" className="py-24 relative overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+              <Info className="w-3 h-3" />
+              Field Manual
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter mb-4">
+              OPERATIONAL <span className="text-primary">PROTOCOLS</span>
+            </h2>
+            <p className="text-foreground/60 leading-relaxed">
+              Standard operating procedures for all GuardianNet units. Failure to follow these 
+              protocols compromises mission safety and grid integrity.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {protocols.map((section, idx) => (
+            <InstructionSection key={idx} {...section} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
