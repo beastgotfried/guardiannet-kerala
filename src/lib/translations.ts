@@ -54,6 +54,17 @@ export const translations = {
         distance: "Distance to Target",
         victims: "People trapped"
       }
+    },
+    footer: {
+      platform: "Platform",
+      regions: "Regions",
+      resources: "Resources",
+      links: {
+        documentation: "Documentation",
+        apiAccess: "API Access",
+        ksdmaPortal: "KSDMA Portal",
+        emergencyContacts: "Emergency Contacts"
+      }
     }
   },
   hi: {
