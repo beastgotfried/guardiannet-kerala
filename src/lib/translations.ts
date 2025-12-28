@@ -6,8 +6,9 @@ export const translations = {
       technology: "Technology",
       ksdma: "KSDMA",
       keralaContext: "Kerala Context",
-      about: "About",
-      volunteer: "Volunteer",
+        about: "About",
+        instructions: "Instructions",
+        volunteer: "Volunteer",
       volunteerNow: "Volunteer Now"
     },
     hero: {
@@ -73,8 +74,9 @@ export const translations = {
       technology: "तकनीक",
       ksdma: "KSDMA",
       keralaContext: "केरल संदर्भ",
-      about: "हमारे बारे में",
-      volunteer: "स्वयंसेवक",
+        about: "हमारे बारे में",
+        instructions: "निर्देश",
+        volunteer: "स्वयंसेवक",
       volunteerNow: "अभी स्वयंसेवक बनें"
     },
     hero: {
@@ -140,8 +142,9 @@ export const translations = {
       technology: "സാങ്കേതികവിദ്യ",
       ksdma: "കെ.എസ്.ഡി.എം.എ",
       keralaContext: "കേരള സാഹചര്യം",
-      about: "ഞങ്ങളെക്കുറിച്ച്",
-      volunteer: "സന്നദ്ധപ്രവർത്തകർ",
+        about: "ഞങ്ങളെക്കുറിച്ച്",
+        instructions: "നിർദ്ദേശങ്ങൾ",
+        volunteer: "സന്നദ്ധപ്രവർത്തകർ",
       volunteerNow: "സന്നദ്ധപ്രവർത്തകനാകൂ"
     },
     hero: {

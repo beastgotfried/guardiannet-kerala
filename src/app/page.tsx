@@ -149,6 +149,7 @@ export default function Home() {
               {[
                 { name: t.nav.technology, id: "technology" },
                 { name: t.nav.ksdma, id: "ksdma" },
+                { name: t.nav.instructions, id: "protocols" },
                 { name: t.nav.keralaContext, id: "#" },
                 { name: t.nav.about, id: "#" }
               ].map((item) => (
@@ -218,6 +219,7 @@ export default function Home() {
                   {[
                     { name: t.nav.technology, id: "technology" },
                     { name: t.nav.ksdma, id: "ksdma" },
+                    { name: t.nav.instructions, id: "protocols" },
                     { name: t.nav.keralaContext, id: "#" },
                     { name: t.nav.about, id: "#" }
                   ].map((item) => (

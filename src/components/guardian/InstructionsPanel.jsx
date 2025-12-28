@@ -70,6 +70,36 @@ export const InstructionsPanel = () => {
         { label: "Ham Radio", content: "Maintain silence on Emergency Channel 1. Only transmit situation reports (SITREPs) every 15 minutes or during immediate life-threats." }
       ]
     },
+    {
+      icon: Battery,
+      title: "Logistics & Mesh Handover",
+      color: "blue",
+      items: [
+        { label: "Fuel Distribution", content: "Priority for fuel goes to heavy excavators and medical transport. Do not use reserve fuel for personal generators without Command approval." },
+        { label: "Mesh Maintenance", content: "If a node goes offline, the nearest unit must physically verify the node. If damaged, deploy a portable mesh repeater immediately." },
+        { label: "Resource Tagging", content: "All supplies entering the zone must be QR-scanned. Unverified supplies (especially medications) must be quarantined." }
+      ]
+    },
+    {
+      icon: Users2,
+      title: "Mental Health & Support",
+      color: "purple",
+      items: [
+        { label: "Secondary Trauma", content: "Responders must rotate every 4 hours. If you feel overwhelmed, report to the 'Purple Zone' for mandatory rest and debriefing." },
+        { label: "Family Liaison", content: "Do not provide confirmation of casualties to family members. Refer all inquiries to the official KSDMA Information Desk at the base." },
+        { label: "Victim Dignity", content: "Ensure all remains are covered immediately. Maintain a screen around recovery operations in residential areas." }
+      ]
+    },
+    {
+      icon: Dog,
+      title: "Livestock & Environment",
+      color: "green",
+      items: [
+        { label: "Animal Rescue", content: "Mark locations of trapped livestock with yellow spray paint. Do not attempt rescue if it compromises human SAR operations." },
+        { label: "Chemical Runoff", content: "Report any strong chemical odors or oily sheens on water. Landslides often rupture domestic septic and fuel tanks." },
+        { label: "Eco-Preservation", content: "Avoid using heavy machinery on 'vulnerable slopes' unless life-saving. Excessive vibration can trigger tertiary slides." }
+      ]
+    },
       {
         icon: AlertOctagon,
         title: "Emergency & Recovery",
