@@ -70,19 +70,20 @@ export const InstructionsPanel = () => {
         { label: "Ham Radio", content: "Maintain silence on Emergency Channel 1. Only transmit situation reports (SITREPs) every 15 minutes or during immediate life-threats." }
       ]
     },
-    {
-      icon: AlertOctagon,
-      title: "Emergency & Recovery",
-      color: "red",
-      items: [
-        { label: "Loss of Comms", content: "If internet/cellular fails, switch to Bluetooth Mesh Mode on the app or physically report to the nearest Green Zone Assembly Point." },
-        { label: "Secondary Slides", content: "If ground tremors or 'cracking' sounds are heard, initiate immediate 2-minute whistle blast. All personnel must move to high ground immediately." },
-        { label: "Mental Health", content: "If a responder shows signs of acute distress, escort them to the Zone 3 Support Hub. Compassion is part of our resilience." },
-        { label: "Livestock/Pets", content: "Report animal sightings to the Animal Husbandry unit. Do not attempt rescue if it compromises human safety zones." },
-        { label: "Mesh Handover", content: "When moving between zones, ensure your device handshakes with the new Zone Command node to maintain the decentralized grid." }
-      ]
-    }
-  ];
+      {
+        icon: AlertOctagon,
+        title: "Emergency & Recovery",
+        color: "red",
+        items: [
+          { label: "Loss of Comms", content: "If internet/cellular fails, switch to Bluetooth Mesh Mode on the app or physically report to the nearest Green Zone Assembly Point." },
+          { label: "Secondary Slides", content: "If ground tremors or 'cracking' sounds are heard, initiate immediate 2-minute whistle blast. All personnel must move to high ground immediately." },
+          { label: "HazMat Alert", content: "If JCBs or vehicles leak fuel/hydraulic fluid near water sources, use immediate sand barriers. Report fuel spills to the Logistics Unit." },
+          { label: "SAR Signals", content: "1 Whistle Blast: Stop/Look; 2 Blasts: Move/Go; 3 Blasts: EMERGENCY/HELP. At night, use 3 flashes of light to indicate distress." },
+          { label: "Water Safety", content: "Do not consume local water. Use only sealed containers or water from the Zone 3 Purification Node. Contaminated water is a risk for leptospirosis." },
+          { label: "MCI Triage", content: "Red: Immediate life-threat; Yellow: Delayed (stable); Green: Minor; Black: Deceased. Tag clearly and notify the Medical Dispatcher." }
+        ]
+      }
+    ];
 
   return (
     <section id="protocols" className="py-24 relative overflow-hidden">
