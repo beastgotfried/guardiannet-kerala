@@ -66,20 +66,14 @@ export const translations = {
       resources: "Resources",
       platformItems: ["Asset Mapping", "Mesh Networking", "Skill Verification", "Camp Management"],
       regionItems: ["Wayanad", "Idukki", "Palakkad", "Kozhikode", "Malappuram"],
-        links: {
-          documentation: "Documentation",
-          apiAccess: "API Access",
-          ksdmaPortal: "KSDMA Portal",
-          emergencyContacts: "Emergency Contacts",
-          emergencyContact: "Emergency Contact",
-          dgcaNorms: "DGCA Norms",
-          landslideData: "KSDMA Landslide Data",
-          meshNetworking: "Mesh Networking",
-          assetMapping: "Asset Mapping"
-        }
+      links: {
+        emergencyContact: "Emergency Contacts",
+        dgcaNorms: "DGCA Drone Norms",
+        landslideData: "Landslide Data"
       }
-    },
-    hi: {
+    }
+  },
+  hi: {
     nav: {
       technology: "तकनीक",
       ksdma: "KSDMA",
@@ -144,20 +138,14 @@ export const translations = {
       resources: "संसाधन",
       platformItems: ["एसेट मैपिंग", "मेश नेटवर्किंग", "कौशल सत्यापन", "शिविर प्रबंधन"],
       regionItems: ["वायनाड", "इडुक्की", "पालक्कड़", "कोझिकोड", "मलप्पुरम"],
-        links: {
-          documentation: "दस्तावेज़",
-          apiAccess: "API एक्सेस",
-          ksdmaPortal: "KSDMA पोर्टल",
-          emergencyContacts: "आपातकालीन संपर्क",
-          emergencyContact: "आपातकालीन संपर्क",
-          dgcaNorms: "DGCA मानदंड",
-          landslideData: "KSDMA भूस्खलन डेटा",
-          meshNetworking: "मेश नेटवर्किंग",
-          assetMapping: "एसेट मैपिंग"
-        }
+      links: {
+        emergencyContact: "आपातकालीन संपर्क",
+        dgcaNorms: "DGCA ड्रोन नियम",
+        landslideData: "भूस्खलन डेटा"
       }
-    },
-    ml: {
+    }
+  },
+  ml: {
     nav: {
       technology: "സാങ്കേതികവിദ്യ",
       ksdma: "കെ.എസ്.ഡി.എം.എ",
@@ -222,17 +210,11 @@ export const translations = {
       resources: "വിഭവങ്ങൾ",
       platformItems: ["അസറ്റ് മാപ്പിംഗ്", "മെഷ് നെറ്റ്‌വർക്കിംഗ്", "നൈപുണ്യ പരിശോധന", "ക്യാമ്പ് മാനേജ്‌മെന്റ്"],
       regionItems: ["വയനാട്", "ഇടുക്കി", "പാലക്കാട്", "കോഴിക്കോട്", "മലപ്പുറം"],
-        links: {
-          documentation: "ഡോക്യുമെന്റേഷൻ",
-          apiAccess: "API ആക്സസ്",
-          ksdmaPortal: "KSDMA പോർട്ടൽ",
-          emergencyContacts: "അടിയന്തര സമ്പർക്കം",
-          emergencyContact: "അടിയന്തര സമ്പർക്കം",
-          dgcaNorms: "DGCA മാനദണ്ഡങ്ങൾ",
-          landslideData: "KSDMA ഉരുൾപൊട്ടൽ വിവരങ്ങൾ",
-          meshNetworking: "മെഷ് നെറ്റ്‌വർക്കിംഗ്",
-          assetMapping: "അസറ്റ് മാപ്പിംഗ്"
-        }
+      links: {
+        emergencyContact: "അടിയന്തര സമ്പർക്കം",
+        dgcaNorms: "DGCA ഡ്രോൺ നിയമങ്ങൾ",
+        landslideData: "ലാൻഡ്‌സ്ലൈഡ് ഡാറ്റ"
       }
     }
-  };
+  }
+};
