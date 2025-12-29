@@ -64,7 +64,12 @@ export const translations = {
       platform: "Platform",
       regions: "Regions",
       resources: "Resources",
-      platformItems: ["Asset Mapping", "Mesh Networking", "Skill Verification", "Camp Management"],
+      platformItems: [
+        { name: "Asset Mapping", href: "#technology" },
+        { name: "Mesh Networking", href: "https://web-ble-mesh-chat.vercel.app/" },
+        { name: "Skill Verification", href: "#" },
+        { name: "Camp Management", href: "#" }
+      ],
       regionItems: ["Wayanad", "Idukki", "Palakkad", "Kozhikode", "Malappuram"],
       links: {
         documentation: "Documentation",
@@ -72,11 +77,6 @@ export const translations = {
         ksdmaPortal: "KSDMA Portal",
         emergencyContacts: "Emergency Contacts"
       }
-    },
-    privacy: {
-      title: "GuardianNet Privacy Notice",
-      content: "This platform is designed for emergency response in the Western Ghats. By continuing, you agree to our terms regarding data collection during disasters, including location sharing for rescue operations and Bluetooth mesh communication protocols. Your data is encrypted and used solely for public safety.",
-      agree: "I Agree & Continue"
     }
   },
   hi: {
@@ -101,7 +101,7 @@ export const translations = {
         districts: "कवर किए गए जिले",
         uptime: "नेटवर्क अपटाइम"
       },
-      scroll: "अन्वेषण के लिए स्क्रॉल करें"
+      scroll: "अन्വേषण के लिए स्क्रॉल करें"
     },
     dashboard: {
       title: "KSDMA नियंत्रण केंद्र",
@@ -142,7 +142,12 @@ export const translations = {
       platform: "प्लेटफार्म",
       regions: "क्षेत्र",
       resources: "संसाधन",
-      platformItems: ["एसेट मैपिंग", "मेश नेटवर्किंग", "कौशल सत्यापन", "शिविर प्रबंधन"],
+      platformItems: [
+        { name: "एसेट मैपिंग", href: "#technology" },
+        { name: "मेश नेटवर्किंग", href: "https://web-ble-mesh-chat.vercel.app/" },
+        { name: "कौशल सत्यापन", href: "#" },
+        { name: "शिविर प्रबंधन", href: "#" }
+      ],
       regionItems: ["वायनाड", "इडुक्की", "पालक्कड़", "कोझिकोड", "मलप्पुरम"],
       links: {
         documentation: "दस्तावेज़",
@@ -150,11 +155,6 @@ export const translations = {
         ksdmaPortal: "KSDMA पोर्टल",
         emergencyContacts: "आपातकालीन संपर्क"
       }
-    },
-    privacy: {
-      title: "गार्जियननेट गोपनीयता सूचना",
-      content: "यह प्लेटफॉर्म पश्चिमी घाट में आपातकालीन प्रतिक्रिया के लिए डिज़ाइन किया गया है। जारी रखकर, आप आपदाओं के दौरान डेटा संग्रह के संबंध में हमारी शर्तों से सहमत होते हैं, जिसमें बचाव कार्यों के लिए स्थान साझा करना और ब्लूटूथ मेश संचार प्रोटोकॉल शामिल हैं। आपका डेटा एन्क्रिप्टेड है और इसका उपयोग केवल सार्वजनिक सुरक्षा के लिए किया जाता है।",
-      agree: "मैं सहमत हूँ और जारी रखें"
     }
   },
   ml: {
@@ -220,7 +220,12 @@ export const translations = {
       platform: "പ്ലാറ്റ്‌ഫോം",
       regions: "മേഖലകൾ",
       resources: "വിഭവങ്ങൾ",
-      platformItems: ["അസറ്റ് മാപ്പിംഗ്", "മെഷ് നെറ്റ്‌വർക്കിംഗ്", "നൈപുണ്യ പരിശോധന", "ക്യാമ്പ് മാനേജ്‌മെന്റ്"],
+      platformItems: [
+        { name: "അസറ്റ് മാപ്പിംഗ്", href: "#technology" },
+        { name: "മെഷ് നെറ്റ്‌വർക്കിംഗ്", href: "https://web-ble-mesh-chat.vercel.app/" },
+        { name: "നൈപുണ്യ പരിശോധന", href: "#" },
+        { name: "ക്യാമ്പ് മാനേജ്‌മെന്റ്", href: "#" }
+      ],
       regionItems: ["വയനാട്", "ഇടുക്കി", "പാലക്കാട്", "കോഴിക്കോട്", "മലപ്പുറം"],
       links: {
         documentation: "ഡോക്യുമെന്റേഷൻ",
@@ -228,11 +233,6 @@ export const translations = {
         ksdmaPortal: "KSDMA പോർട്ടൽ",
         emergencyContacts: "അടിയന്തര സമ്പർക്കം"
       }
-    },
-    privacy: {
-      title: "ഗാർഡിയൻ നെറ്റ് സ്വകാര്യതാ അറിയിപ്പ്",
-      content: "പശ്ചിമഘട്ടത്തിലെ അടിയന്തര സാഹചര്യങ്ങൾക്കായി രൂപകൽപ്പന ചെയ്തതാണ് ഈ പ്ലാറ്റ്‌ഫോം. തുടരുന്നതിലൂടെ, ദുരന്തസമയത്തെ ഡാറ്റാ ശേഖരണം, രക്ഷാപ്രവർത്തനങ്ങൾക്കായുള്ള ലൊക്കേഷൻ പങ്കിടൽ, ബ്ലൂടൂത്ത് മെഷ് ആശയവിനിമയ പ്രോട്ടോക്കോളുകൾ എന്നിവയുമായി ബന്ധപ്പെട്ട ഞങ്ങളുടെ നിബന്ധനകൾ നിങ്ങൾ അംഗീകരിക്കുന്നു. നിങ്ങളുടെ ഡാറ്റ എൻക്രിപ്റ്റ് ചെയ്തതും പൊതു സുരക്ഷയ്ക്കായി മാത്രം ഉപയോഗിക്കുന്നതുമാണ്.",
-      agree: "ഞാൻ അംഗീകരിക്കുന്നു, തുടരുക"
     }
   }
 };

@@ -73,7 +73,8 @@ function TerrainLines() {
 }
 
 export function Hero({ onGetStarted, onViewMap }: HeroProps) {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const isIndic = language === 'ml' || language === 'hi';
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -108,9 +109,10 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-sm font-bold mb-10 shadow-2xl backdrop-blur-xl">
-              <Shield className="w-5 h-5 text-primary" />
-              <span className="text-white/90 tracking-widest uppercase text-[10px]">GuardianNet: Kerala Edition</span>
+              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-sm font-bold mb-10 shadow-2xl backdrop-blur-xl">
+                <Shield className="w-5 h-5 text-primary" />
+                <span className={`text-white/90 ${isIndic ? "" : "tracking-widest uppercase"} text-[10px]`}>GuardianNet: Kerala Edition</span>
+
               <div className="flex items-center gap-2 border-l border-white/10 pl-3 ml-1">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 <span className="text-green-400 text-[10px] font-black tracking-tighter">NODE-01 ACTIVE</span>
@@ -189,7 +191,8 @@ export function Hero({ onGetStarted, onViewMap }: HeroProps) {
                 <p className="text-4xl font-black mb-2 text-white">
                   {stat.value}<span className="text-primary">{stat.suffix}</span>
                 </p>
-                <p className="text-[10px] text-white/50 font-black uppercase tracking-[0.2em]">{stat.label}</p>
+                  <p className={`text-[10px] text-white/50 font-black ${isIndic ? "" : "uppercase tracking-[0.2em]"}`}>{stat.label}</p>
+
               </motion.div>
             ))}
           </motion.div>
