@@ -46,9 +46,14 @@ export const translations = {
         show: "View Tactical Briefing",
         hide: "Hide Tactical Briefing"
       },
-      interface: "OPEN VOLUNTEER INTERFACE",
-      exit: "EXIT INTERFACE",
-      mission: {
+        interface: "OPEN VOLUNTEER INTERFACE",
+        exit: "EXIT INTERFACE",
+        noConnection: {
+          title: "No connection?",
+          server1: "Server 1",
+          server2: "Server 2"
+        },
+        mission: {
         accepted: "Mission Accepted",
         target: "Target Location",
         distance: "Distance to Target",
@@ -115,8 +120,13 @@ export const translations = {
         hide: "सामरिक ब्रीफिंग छिपाएं"
       },
       interface: "स्वयंसेवक इंटरफ़ेस खोलें",
-      exit: "इंटरफ़ेस से बाहर निकलें",
-      mission: {
+        exit: "इंटरफ़ेस से बाहर निकलें",
+        noConnection: {
+          title: "कोई कनेक्शन नहीं?",
+          server1: "सर्वर 1",
+          server2: "सर्वर 2"
+        },
+        mission: {
         accepted: "मिशन स्वीकार किया गया",
         target: "लक्ष्य स्थान",
         distance: "लक्ष्य से दूरी",
@@ -183,8 +193,13 @@ export const translations = {
         hide: "വിവരങ്ങൾ മറയ്ക്കുക"
       },
       interface: "വോളന്റിയർ ഇന്റർഫേസ്",
-      exit: "പുറത്തുകടക്കുക",
-      mission: {
+        exit: "പുറത്തുകടക്കുക",
+        noConnection: {
+          title: "കണക്ഷൻ ഇല്ലേ?",
+          server1: "സെർവർ 1",
+          server2: "സെർവർ 2"
+        },
+        mission: {
         accepted: "ദൗത്യം സ്വീകരിച്ചു",
         target: "ലക്ഷ്യസ്ഥാനം",
         distance: "ദൂരം",

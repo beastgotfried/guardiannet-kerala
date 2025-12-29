@@ -325,6 +325,26 @@ export default function Home() {
                         <Briefcase className="w-5 h-5" />
                         {t.volunteer.interface}
                       </motion.button>
+
+                      <div className="flex flex-col gap-2 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
+                        <span className="text-[10px] font-black uppercase text-red-500/60 tracking-tighter mb-1">
+                          {t.volunteer.noConnection.title}
+                        </span>
+                        <div className="flex gap-2">
+                          <button 
+                            onClick={() => handleExternalLink("https://meshrelay-9dtn549.public.builtwithrocket.new/device-connection-hub")}
+                            className="px-4 py-2 rounded-lg bg-red-600 text-white text-[10px] font-bold hover:bg-red-700 transition-colors shadow-lg shadow-red-600/20"
+                          >
+                            {t.volunteer.noConnection.server1}
+                          </button>
+                          <button 
+                            onClick={() => handleExternalLink("https://web-ble-mesh-chat.vercel.app/")}
+                            className="px-4 py-2 rounded-lg bg-red-600 text-white text-[10px] font-bold hover:bg-red-700 transition-colors shadow-lg shadow-red-600/20"
+                          >
+                            {t.volunteer.noConnection.server2}
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
 

@@ -71,13 +71,13 @@ export const InstructionsPanel = () => {
       ]
     },
     {
-      icon: Battery,
+      icon: Network,
       title: "Logistics & Mesh Handover",
       color: "blue",
       items: [
-        { label: "Fuel Distribution", content: "Priority for fuel goes to heavy excavators and medical transport. Do not use reserve fuel for personal generators without Command approval." },
-        { label: "Mesh Maintenance", content: "If a node goes offline, the nearest unit must physically verify the node. If damaged, deploy a portable mesh repeater immediately." },
-        { label: "Resource Tagging", content: "All supplies entering the zone must be QR-scanned. Unverified supplies (especially medications) must be quarantined." }
+        { label: "Mesh Nodes", content: "Deploy 'Guardian Beacon' nodes every 200 meters in dead zones. Ensure clear line-of-sight between nodes for maximum throughput." },
+        { label: "Battery Swap", content: "Mobile units must return to Zone 4 Command for battery swaps if SOC falls below 15%. Do not exhaust batteries completely." },
+        { label: "Supply Drops", content: "Mark air-drop zones with 'H' (Helicopter) or 'D' (Drone) using lime powder or high-vis fabric. Secure the perimeter before drop." }
       ]
     },
     {
@@ -85,9 +85,9 @@ export const InstructionsPanel = () => {
       title: "Mental Health & Support",
       color: "purple",
       items: [
-        { label: "Secondary Trauma", content: "Responders must rotate every 4 hours. If you feel overwhelmed, report to the 'Purple Zone' for mandatory rest and debriefing." },
-        { label: "Family Liaison", content: "Do not provide confirmation of casualties to family members. Refer all inquiries to the official KSDMA Information Desk at the base." },
-        { label: "Victim Dignity", content: "Ensure all remains are covered immediately. Maintain a screen around recovery operations in residential areas." }
+        { label: "Peer Support", content: "Watch for signs of acute stress in team members (confusion, paralysis). Mandate 15-minute 'Grounding Breaks' every 4 hours." },
+        { label: "Victim Dignity", content: "Always use white shrouds for recovery. Shield recovery operations from public view and media cameras using privacy screens." },
+        { label: "Language", content: "In Kerala zones, ensure at least one Malayalam speaker is present in every strike team to facilitate communication with locals." }
       ]
     },
     {
@@ -95,25 +95,25 @@ export const InstructionsPanel = () => {
       title: "Livestock & Environment",
       color: "green",
       items: [
-        { label: "Animal Rescue", content: "Mark locations of trapped livestock with yellow spray paint. Do not attempt rescue if it compromises human SAR operations." },
-        { label: "Chemical Runoff", content: "Report any strong chemical odors or oily sheens on water. Landslides often rupture domestic septic and fuel tanks." },
-        { label: "Eco-Preservation", content: "Avoid using heavy machinery on 'vulnerable slopes' unless life-saving. Excessive vibration can trigger tertiary slides." }
+        { label: "Animal Rescue", content: "Report trapped livestock to the Veterinary Response Unit. Do not attempt to move large animals (cattle) without specialized harnesses." },
+        { label: "Water Pollution", content: "Monitor for changes in river color (grey/oily). Upstream landslide damming is a critical threat; report unusual water level drops." },
+        { label: "K-PUP Units", content: "K9 search teams have right-of-way. Maintain absolute silence and keep 10-meter distance when sniffer dogs are actively 'scenting'." }
       ]
     },
-      {
-        icon: AlertOctagon,
-        title: "Emergency & Recovery",
-        color: "red",
-        items: [
-          { label: "Loss of Comms", content: "If internet/cellular fails, switch to Bluetooth Mesh Mode on the app or physically report to the nearest Green Zone Assembly Point." },
-          { label: "Secondary Slides", content: "If ground tremors or 'cracking' sounds are heard, initiate immediate 2-minute whistle blast. All personnel must move to high ground immediately." },
-          { label: "HazMat Alert", content: "If JCBs or vehicles leak fuel/hydraulic fluid near water sources, use immediate sand barriers. Report fuel spills to the Logistics Unit." },
-          { label: "SAR Signals", content: "1 Whistle Blast: Stop/Look; 2 Blasts: Move/Go; 3 Blasts: EMERGENCY/HELP. At night, use 3 flashes of light to indicate distress." },
-          { label: "Water Safety", content: "Do not consume local water. Use only sealed containers or water from the Zone 3 Purification Node. Contaminated water is a risk for leptospirosis." },
-          { label: "MCI Triage", content: "Red: Immediate life-threat; Yellow: Delayed (stable); Green: Minor; Black: Deceased. Tag clearly and notify the Medical Dispatcher." }
-        ]
-      }
-    ];
+    {
+      icon: AlertOctagon,
+      title: "Emergency & Recovery",
+      color: "red",
+      items: [
+        { label: "Loss of Comms", content: "If internet/cellular fails, switch to Bluetooth Mesh Mode on the app or physically report to the nearest Green Zone Assembly Point." },
+        { label: "Secondary Slides", content: "If ground tremors or 'cracking' sounds are heard, initiate immediate 2-minute whistle blast. All personnel must move to high ground immediately." },
+        { label: "HazMat Alert", content: "If JCBs or vehicles leak fuel/hydraulic fluid near water sources, use immediate sand barriers. Report fuel spills to the Logistics Unit." },
+        { label: "SAR Signals", content: "1 Whistle Blast: Stop/Look; 2 Blasts: Move/Go; 3 Blasts: EMERGENCY/HELP. At night, use 3 flashes of light to indicate distress." },
+        { label: "Water Safety", content: "Do not consume local water. Use only sealed containers or water from the Zone 3 Purification Node. Contaminated water is a risk for leptospirosis." },
+        { label: "MCI Triage", content: "Red: Immediate life-threat; Yellow: Delayed (stable); Green: Minor; Black: Deceased. Tag clearly and notify the Medical Dispatcher." }
+      ]
+    }
+  ];
 
   return (
     <section id="protocols" className="py-24 relative overflow-hidden">
