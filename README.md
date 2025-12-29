@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GuardianNet (Kerala Edition)
 
-## Getting Started
+> **Hyper-local resilience for the Western Ghats.** Built to ensure that the nearest help is always connected, even when the grid fails.
 
-First, run the development server:
+GuardianNet is a decentralized disaster response platform designed specifically for the unique challenges of landslide-prone zones in Kerala. It focuses on the "Golden Hour" of rescue by mobilizing local experts before official aid can arrive through blocked roads.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+##  Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+*   **Interactive Crisis Mapping:** Real-time visualization of incident zones (e.g., Mundakkai, Chooralmala) with Leaflet-based tracking.
+*   **Verified Responder Mesh:** A tactical directory of local talent—drone pilots for high-altitude search, excavator operators for debris clearance, and medical strike teams.
+*   **Off-Grid Coordination:** Integrated mesh networking protocols (BLE/Web Mesh) to maintain communication when the central grid is down.
+*   **KSDMA Control Center:** Live dashboard for state-level oversight, tracking rainfall, wind speed, and risk indices.
+*   **Multilingual Support:** Fully accessible in **English, Hindi, and Malayalam** to ensure every volunteer can act effectively.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+##  Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Maps:** Leaflet.js
 
-## Learn More
+##  For Responders
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you are a drone pilot, excavator operator, or medical professional in the Kerala region, you can register through the **Verification Portal** to receive direct mission assignments during active alerts.
