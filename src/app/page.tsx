@@ -8,7 +8,7 @@ import { KSDMADashboard } from "@/components/guardian/KSDMADashboard";
 import { AIAssistant } from "@/components/guardian/AIAssistant";
 import { VerificationPortal } from "@/components/guardian/VerificationPortal";
 import { VolunteerView } from "@/components/guardian/VolunteerView";
-import { Shield, Menu, Github, ExternalLink, X, Users, Briefcase, Zap, Globe, AlertTriangle } from "lucide-react";
+import { Shield, Menu, Github, ExternalLink, X, Users, Briefcase, Zap, Globe, AlertTriangle, Lock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/hooks/use-language";
@@ -23,6 +23,7 @@ export default function Home() {
   const [showVolunteerInfo, setShowVolunteerInfo] = useState(false);
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
   const [showNotification, setShowNotification] = useState(false);
+  const [showPrivacyNotice, setShowPrivacyNotice] = useState(true);
 
   useEffect(() => {
     if (isLandslideTriggered) {
@@ -115,6 +116,51 @@ export default function Home() {
       <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <div className="noise-overlay" />
         
+        <AnimatePresence>
+          {showPrivacyNotice && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-background/80 backdrop-blur-md"
+            >
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                className="max-w-2xl w-full bg-secondary/20 border border-white/10 p-8 rounded-[2rem] shadow-2xl relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/20" />
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+                    <Lock className="w-6 h-6" />
+                  </div>
+                  <h2 className="text-2xl font-bold italic tracking-tight">{t.privacy.title}</h2>
+                </div>
+                <div className="space-y-4 text-foreground/60 leading-relaxed mb-8">
+                  <p>{t.privacy.content}</p>
+                  <ul className="space-y-2 text-xs font-mono">
+                    <li className="flex gap-2">
+                      <span className="text-primary">●</span> {language === 'en' ? "End-to-end encrypted messaging via mesh networks" : language === 'hi' ? "मेश नेटवर्क के माध्यम से एंड-टू-एंड एन्क्रिप्टेड मैसेजिंग" : "മെഷ് നെറ്റ്‌വർക്കുകൾ വഴി എൻഡ്-ടു-എൻഡ് എൻക്രിപ്റ്റ് ചെയ്ത സന്ദേശമയയ്ക്കൽ"}
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-primary">●</span> {language === 'en' ? "Anonymous reporting protocols for disaster zones" : language === 'hi' ? "आपदा क्षेत्रों के लिए गुमनाम रिपोर्टिंग प्रोटोकॉल" : "ദുരന്ത മേഖലകൾക്കായി അജ്ഞാത റിപ്പോർട്ടിംഗ് പ്രോട്ടോക്കോളുകൾ"}
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-primary">●</span> {language === 'en' ? "Role-based data access restricted to verified KSDMA personnel" : language === 'hi' ? "सत्यापित KSDMA कर्मियों तक सीमित भूमिका-आधारित डेटा पहुंच" : "പരിശോധിച്ച കെ.എസ്.ഡി.എം.എ ഉദ്യോഗസ്ഥർക്ക് മാത്രമായി ഡാറ്റാ ആക്സസ്"}
+                    </li>
+                  </ul>
+                </div>
+                <button 
+                  onClick={() => setShowPrivacyNotice(false)}
+                  className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-black uppercase tracking-widest hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95"
+                >
+                  {t.privacy.agree}
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <motion.nav 
           initial={{ y: -100 }}
           animate={{ y: 0 }}
@@ -151,7 +197,7 @@ export default function Home() {
                 { name: t.nav.ksdma, id: "ksdma" },
                 { name: t.nav.instructions, id: "protocols" },
                 { name: t.nav.keralaContext, id: "#" },
-                { name: t.nav.about, id: "#" }
+                { name: t.nav.about, id: "footer" }
               ].map((item) => (
                 <motion.a 
                   key={item.name}
@@ -221,7 +267,7 @@ export default function Home() {
                     { name: t.nav.ksdma, id: "ksdma" },
                     { name: t.nav.instructions, id: "protocols" },
                     { name: t.nav.keralaContext, id: "#" },
-                    { name: t.nav.about, id: "#" }
+                    { name: t.nav.about, id: "footer" }
                   ].map((item) => (
                     <a 
                       key={item.name}
@@ -331,18 +377,32 @@ export default function Home() {
                           {t.volunteer.noConnection.title}
                         </span>
                         <div className="flex gap-2">
-                          <button 
-                            onClick={() => handleExternalLink("https://meshrelay-9dtn549.public.builtwithrocket.new/device-connection-hub")}
-                            className="px-4 py-2 rounded-lg bg-red-600 text-white text-[10px] font-bold hover:bg-red-700 transition-colors shadow-lg shadow-red-600/20"
+                          <a 
+                            href="https://meshrelay-9dtn549.public.builtwithrocket.new/device-connection-hub"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleExternalLink("https://meshrelay-9dtn549.public.builtwithrocket.new/device-connection-hub");
+                            }}
+                            className="px-4 py-2 rounded-lg bg-red-600 text-white text-[10px] font-bold hover:bg-red-700 transition-colors shadow-lg shadow-red-600/20 flex items-center gap-2"
                           >
                             {t.volunteer.noConnection.server1}
-                          </button>
-                          <button 
-                            onClick={() => handleExternalLink("https://web-ble-mesh-chat.vercel.app/")}
-                            className="px-4 py-2 rounded-lg bg-red-600 text-white text-[10px] font-bold hover:bg-red-700 transition-colors shadow-lg shadow-red-600/20"
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                          <a 
+                            href="https://web-ble-mesh-chat.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleExternalLink("https://web-ble-mesh-chat.vercel.app/");
+                            }}
+                            className="px-4 py-2 rounded-lg bg-red-600 text-white text-[10px] font-bold hover:bg-red-700 transition-colors shadow-lg shadow-red-600/20 flex items-center gap-2"
                           >
                             {t.volunteer.noConnection.server2}
-                          </button>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -476,7 +536,7 @@ export default function Home() {
           )}
         </AnimatePresence>
 
-        <footer className="py-24 border-t border-white/5 bg-gradient-to-t from-secondary/20 to-transparent relative overflow-hidden">
+        <footer id="footer" className="py-24 border-t border-white/5 bg-gradient-to-t from-secondary/20 to-transparent relative overflow-hidden">
           <div className="absolute inset-0 topographic-bg opacity-20" />
           <div className="container mx-auto px-4 relative z-10">
             <div className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-20">
@@ -501,7 +561,7 @@ export default function Home() {
               
               <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-16">
                 <div>
-                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.platform}</h4>
+                  <h4 className={`font-bold mb-6 text-sm tracking-widest text-foreground/60 ${language === 'en' ? 'uppercase' : ''}`}>{t.footer.platform}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
                     {t.footer.platformItems.map((item) => (
                       <li key={item}>
@@ -511,7 +571,7 @@ export default function Home() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.regions}</h4>
+                  <h4 className={`font-bold mb-6 text-sm tracking-widest text-foreground/60 ${language === 'en' ? 'uppercase' : ''}`}>{t.footer.regions}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
                     {t.footer.regionItems.map((item) => (
                       <li key={item}>
@@ -521,7 +581,7 @@ export default function Home() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.resources}</h4>
+                  <h4 className={`font-bold mb-6 text-sm tracking-widest text-foreground/60 ${language === 'en' ? 'uppercase' : ''}`}>{t.footer.resources}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
                     <li>
                       <a 

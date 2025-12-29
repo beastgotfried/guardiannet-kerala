@@ -6,9 +6,9 @@ export const translations = {
       technology: "Technology",
       ksdma: "KSDMA",
       keralaContext: "Kerala Context",
-        about: "About",
-        instructions: "Instructions",
-        volunteer: "Volunteer",
+      about: "About",
+      instructions: "Instructions",
+      volunteer: "Volunteer",
       volunteerNow: "Volunteer Now"
     },
     hero: {
@@ -46,14 +46,14 @@ export const translations = {
         show: "View Tactical Briefing",
         hide: "Hide Tactical Briefing"
       },
-        interface: "OPEN VOLUNTEER INTERFACE",
-        exit: "EXIT INTERFACE",
-        noConnection: {
-          title: "No connection?",
-          server1: "Server 1",
-          server2: "Server 2"
-        },
-        mission: {
+      interface: "OPEN VOLUNTEER INTERFACE",
+      exit: "EXIT INTERFACE",
+      noConnection: {
+        title: "No connection?",
+        server1: "Server 1",
+        server2: "Server 2"
+      },
+      mission: {
         accepted: "Mission Accepted",
         target: "Target Location",
         distance: "Distance to Target",
@@ -72,6 +72,11 @@ export const translations = {
         ksdmaPortal: "KSDMA Portal",
         emergencyContacts: "Emergency Contacts"
       }
+    },
+    privacy: {
+      title: "GuardianNet Privacy Notice",
+      content: "This platform is designed for emergency response in the Western Ghats. By continuing, you agree to our terms regarding data collection during disasters, including location sharing for rescue operations and Bluetooth mesh communication protocols. Your data is encrypted and used solely for public safety.",
+      agree: "I Agree & Continue"
     }
   },
   hi: {
@@ -79,9 +84,9 @@ export const translations = {
       technology: "तकनीक",
       ksdma: "KSDMA",
       keralaContext: "केरल संदर्भ",
-        about: "हमारे बारे में",
-        instructions: "निर्देश",
-        volunteer: "स्वयंसेवक",
+      about: "हमारे बारे में",
+      instructions: "निर्देश",
+      volunteer: "स्वयंसेवक",
       volunteerNow: "अभी स्वयंसेवक बनें"
     },
     hero: {
@@ -120,13 +125,13 @@ export const translations = {
         hide: "सामरिक ब्रीफिंग छिपाएं"
       },
       interface: "स्वयंसेवक इंटरफ़ेस खोलें",
-        exit: "इंटरफ़ेस से बाहर निकलें",
-        noConnection: {
-          title: "कोई कनेक्शन नहीं?",
-          server1: "सर्वर 1",
-          server2: "सर्वर 2"
-        },
-        mission: {
+      exit: "इंटरफ़ेस से बाहर निकलें",
+      noConnection: {
+        title: "कोई कनेक्शन नहीं?",
+        server1: "सर्वर 1",
+        server2: "सर्वर 2"
+      },
+      mission: {
         accepted: "मिशन स्वीकार किया गया",
         target: "लक्ष्य स्थान",
         distance: "लक्ष्य से दूरी",
@@ -145,6 +150,11 @@ export const translations = {
         ksdmaPortal: "KSDMA पोर्टल",
         emergencyContacts: "आपातकालीन संपर्क"
       }
+    },
+    privacy: {
+      title: "गार्जियननेट गोपनीयता सूचना",
+      content: "यह प्लेटफॉर्म पश्चिमी घाट में आपातकालीन प्रतिक्रिया के लिए डिज़ाइन किया गया है। जारी रखकर, आप आपदाओं के दौरान डेटा संग्रह के संबंध में हमारी शर्तों से सहमत होते हैं, जिसमें बचाव कार्यों के लिए स्थान साझा करना और ब्लूटूथ मेश संचार प्रोटोकॉल शामिल हैं। आपका डेटा एन्क्रिप्टेड है और इसका उपयोग केवल सार्वजनिक सुरक्षा के लिए किया जाता है।",
+      agree: "मैं सहमत हूँ और जारी रखें"
     }
   },
   ml: {
@@ -152,9 +162,9 @@ export const translations = {
       technology: "സാങ്കേതികവിദ്യ",
       ksdma: "കെ.എസ്.ഡി.എം.എ",
       keralaContext: "കേരള സാഹചര്യം",
-        about: "ഞങ്ങളെക്കുറിച്ച്",
-        instructions: "നിർദ്ദേശങ്ങൾ",
-        volunteer: "സന്നദ്ധപ്രവർത്തകർ",
+      about: "ഞങ്ങളെക്കുറിച്ച്",
+      instructions: "നിർദ്ദേശങ്ങൾ",
+      volunteer: "സന്നദ്ധപ്രവർത്തകർ",
       volunteerNow: "സന്നദ്ധപ്രവർത്തകനാകൂ"
     },
     hero: {
@@ -193,13 +203,13 @@ export const translations = {
         hide: "വിവരങ്ങൾ മറയ്ക്കുക"
       },
       interface: "വോളന്റിയർ ഇന്റർഫേസ്",
-        exit: "പുറത്തുകടക്കുക",
-        noConnection: {
-          title: "കണക്ഷൻ ഇല്ലേ?",
-          server1: "സെർവർ 1",
-          server2: "സെർവർ 2"
-        },
-        mission: {
+      exit: "പുറത്തുകടക്കുക",
+      noConnection: {
+        title: "കണക്ഷൻ ഇല്ലേ?",
+        server1: "സെർവർ 1",
+        server2: "സെർവർ 2"
+      },
+      mission: {
         accepted: "ദൗത്യം സ്വീകരിച്ചു",
         target: "ലക്ഷ്യസ്ഥാനം",
         distance: "ദൂരം",
@@ -218,6 +228,11 @@ export const translations = {
         ksdmaPortal: "KSDMA പോർട്ടൽ",
         emergencyContacts: "അടിയന്തര സമ്പർക്കം"
       }
+    },
+    privacy: {
+      title: "ഗാർഡിയൻ നെറ്റ് സ്വകാര്യതാ അറിയിപ്പ്",
+      content: "പശ്ചിമഘട്ടത്തിലെ അടിയന്തര സാഹചര്യങ്ങൾക്കായി രൂപകൽപ്പന ചെയ്തതാണ് ഈ പ്ലാറ്റ്‌ഫോം. തുടരുന്നതിലൂടെ, ദുരന്തസമയത്തെ ഡാറ്റാ ശേഖരണം, രക്ഷാപ്രവർത്തനങ്ങൾക്കായുള്ള ലൊക്കേഷൻ പങ്കിടൽ, ബ്ലൂടൂത്ത് മെഷ് ആശയവിനിമയ പ്രോട്ടോക്കോളുകൾ എന്നിവയുമായി ബന്ധപ്പെട്ട ഞങ്ങളുടെ നിബന്ധനകൾ നിങ്ങൾ അംഗീകരിക്കുന്നു. നിങ്ങളുടെ ഡാറ്റ എൻക്രിപ്റ്റ് ചെയ്തതും പൊതു സുരക്ഷയ്ക്കായി മാത്രം ഉപയോഗിക്കുന്നതുമാണ്.",
+      agree: "ഞാൻ അംഗീകരിക്കുന്നു, തുടരുക"
     }
   }
 };
