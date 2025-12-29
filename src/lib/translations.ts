@@ -66,24 +66,20 @@ export const translations = {
       resources: "Resources",
       platformItems: ["Asset Mapping", "Mesh Networking", "Skill Verification", "Camp Management"],
       regionItems: ["Wayanad", "Idukki", "Palakkad", "Kozhikode", "Malappuram"],
-      links: {
-        emergencyContact: "Emergency Contact",
-        dgcaNorms: "DGCA Norms",
-        landslideData: "KSDMA Landslide Data",
-        meshNetworking: "Mesh Networking",
-        assetMapping: "Asset Mapping"
+        links: {
+          documentation: "Documentation",
+          apiAccess: "API Access",
+          ksdmaPortal: "KSDMA Portal",
+          emergencyContacts: "Emergency Contacts",
+          emergencyContact: "Emergency Contact",
+          dgcaNorms: "DGCA Norms",
+          landslideData: "KSDMA Landslide Data",
+          meshNetworking: "Mesh Networking",
+          assetMapping: "Asset Mapping"
+        }
       }
     },
-    privacy: {
-      title: "GuardianNet Privacy Notice",
-      content1: "GuardianNet collects only the minimum information required to support disaster preparedness and emergency response. This may include basic identification details, declared skills or assets, and location data during active disaster events or simulations. We do not collect data for advertising, tracking, or commercial purposes.",
-      content2: "Location and connectivity data are used only when necessary to identify nearby help, assign tasks, and maintain coordination during emergencies. When internet access is unavailable, GuardianNet may use Bluetooth-based peer-to-peer communication to exchange critical status updates between nearby devices. This data is shared temporarily and synchronized only when connectivity is restored.",
-      content3: "All information is shared strictly with authorized disaster-response authorities and relevant responders within active response zones. Data is protected using role-based access controls and is retained only as long as required for operational or safety purposes. You may access, correct, or request deletion of your data at any time.",
-      content4: "By continuing to use GuardianNet, you acknowledge and agree to this privacy policy, designed to prioritize safety, transparency, and responsible data use.",
-      agree: "AGREE AND CONTINUE"
-    }
-  },
-  hi: {
+    hi: {
     nav: {
       technology: "तकनीक",
       ksdma: "KSDMA",
@@ -148,24 +144,20 @@ export const translations = {
       resources: "संसाधन",
       platformItems: ["एसेट मैपिंग", "मेश नेटवर्किंग", "कौशल सत्यापन", "शिविर प्रबंधन"],
       regionItems: ["वायनाड", "इडुक्की", "पालक्कड़", "कोझिकोड", "मलप्पुरम"],
-      links: {
-        emergencyContact: "आपातकालीन संपर्क",
-        dgcaNorms: "DGCA मानदंड",
-        landslideData: "KSDMA भूस्खलन डेटा",
-        meshNetworking: "मेश नेटवर्किंग",
-        assetMapping: "एसेट मैपिंग"
+        links: {
+          documentation: "दस्तावेज़",
+          apiAccess: "API एक्सेस",
+          ksdmaPortal: "KSDMA पोर्टल",
+          emergencyContacts: "आपातकालीन संपर्क",
+          emergencyContact: "आपातकालीन संपर्क",
+          dgcaNorms: "DGCA मानदंड",
+          landslideData: "KSDMA भूस्खलन डेटा",
+          meshNetworking: "मेश नेटवर्किंग",
+          assetMapping: "एसेट मैपिंग"
+        }
       }
     },
-    privacy: {
-      title: "गार्डियननेट गोपनीयता सूचना",
-      content1: "गार्डियननेट केवल आपदा तैयारी और आपातकालीन प्रतिक्रिया का समर्थन करने के लिए आवश्यक न्यूनतम जानकारी एकत्र करता है। इसमें सक्रिय आपदा घटनाओं या सिमुलेशन के दौरान बुनियादी पहचान विवरण, घोषित कौशल या संपत्ति, और स्थान डेटा शामिल हो सकते हैं। हम विज्ञापन, ट्रैकिंग या व्यावसायिक उद्देश्यों के लिए डेटा एकत्र नहीं करते हैं।",
-      content2: "स्थान और कनेक्टिविटी डेटा का उपयोग केवल आपात स्थिति के दौरान आस-पास की सहायता की पहचान करने, कार्य सौंपने और समन्वय बनाए रखने के लिए आवश्यक होने पर किया जाता है। जब इंटरनेट का उपयोग उपलब्ध नहीं होता है, तो गार्डियननेट आस-पास के उपकरणों के बीच महत्वपूर्ण स्थिति अपडेट साझा करने के लिए ब्लूटूथ-आधारित पीयर-टू-पीयर संचार का उपयोग कर सकता है। यह डेटा अस्थायी रूप से साझा किया जाता है और कनेक्टिविटी बहाल होने पर ही सिंक्रनाइज़ किया जाता है।",
-      content3: "सभी जानकारी केवल अधिकृत आपदा-प्रतिक्रिया अधिकारियों और सक्रिय प्रतिक्रिया क्षेत्रों के भीतर प्रासंगिक उत्तरदाताओं के साथ साझा की जाती है। डेटा को भूमिका-आधारित पहुंच नियंत्रणों का उपयोग करके संरक्षित किया जाता है और केवल तब तक बनाए रखा जाता है जब तक परिचालन या सुरक्षा उद्देश्यों के लिए आवश्यक हो। आप किसी भी समय अपने डेटा तक पहुंच सकते हैं, उसे सुधार सकते हैं या हटाने का अनुरोध कर सकते हैं।",
-      content4: "गार्डियननेट का उपयोग जारी रखकर, आप इस गोपनीयता नीति को स्वीकार करते हैं और सहमत होते हैं, जिसे सुरक्षा, पारदर्शिता और जिम्मेदार डेटा उपयोग को प्राथमिकता देने के लिए डिज़ाइन किया गया है।",
-      agree: "सहमत हैं और जारी रखें"
-    }
-  },
-  ml: {
+    ml: {
     nav: {
       technology: "സാങ്കേതികവിദ്യ",
       ksdma: "കെ.എസ്.ഡി.എം.എ",
@@ -230,21 +222,17 @@ export const translations = {
       resources: "വിഭവങ്ങൾ",
       platformItems: ["അസറ്റ് മാപ്പിംഗ്", "മെഷ് നെറ്റ്‌വർക്കിംഗ്", "നൈപുണ്യ പരിശോധന", "ക്യാമ്പ് മാനേജ്‌മെന്റ്"],
       regionItems: ["വയനാട്", "ഇടുക്കി", "പാലക്കാട്", "കോഴിക്കോട്", "മലപ്പുറം"],
-      links: {
-        emergencyContact: "അടിയന്തര സമ്പർക്കം",
-        dgcaNorms: "DGCA മാനണ്ഡങ്ങൾ",
-        landslideData: "KSDMA ഉരുൾപൊട്ടൽ വിവരങ്ങൾ",
-        meshNetworking: "മെഷ് നെറ്റ്‌വർക്കിംഗ്",
-        assetMapping: "അസറ്റ് മാപ്പിംഗ്"
+        links: {
+          documentation: "ഡോക്യുമെന്റേഷൻ",
+          apiAccess: "API ആക്സസ്",
+          ksdmaPortal: "KSDMA പോർട്ടൽ",
+          emergencyContacts: "അടിയന്തര സമ്പർക്കം",
+          emergencyContact: "അടിയന്തര സമ്പർക്കം",
+          dgcaNorms: "DGCA മാനദണ്ഡങ്ങൾ",
+          landslideData: "KSDMA ഉരുൾപൊട്ടൽ വിവരങ്ങൾ",
+          meshNetworking: "മെഷ് നെറ്റ്‌വർക്കിംഗ്",
+          assetMapping: "അസറ്റ് മാപ്പിംഗ്"
+        }
       }
-    },
-    privacy: {
-      title: "ഗാർഡിയൻനെറ്റ് സ്വകാര്യതാ അറിയിപ്പ്",
-      content1: "ദുരന്ത നിവാരണത്തിനും അടിയന്തര പ്രതികരണത്തിനും ആവശ്യമായ കുറഞ്ഞ വിവരങ്ങൾ മാത്രമേ ഗാർഡിയൻനെറ്റ് ശേഖരിക്കുകയുള്ളൂ. ഇതിൽ അടിസ്ഥാന തിരിച്ചറിയൽ വിവരങ്ങൾ, പ്രഖ്യാപിത കഴിവുകൾ അല്ലെങ്കിൽ ആസ്തികൾ, സജീവമായ ദുരന്ത സമയത്തോ സിമുലേഷനുകളിലോ ഉള്ള ലൊക്കേഷൻ ഡാറ്റ എന്നിവ ഉൾപ്പെടാം. പരസ്യം ചെയ്യുന്നതിനോ ട്രാക്കുചെയ്യുന്നതിനോ വാണിജ്യ ആവശ്യങ്ങൾക്കോ വേണ്ടി ഞങ്ങൾ വിവരങ്ങൾ ശേഖരിക്കുന്നില്ല.",
-      content2: "അടിയന്തര സാഹചര്യങ്ങളിൽ അടുത്തുള്ള സഹായം തിരിച്ചറിയുന്നതിനും ജോലികൾ ഏൽപ്പിക്കുന്നതിനും ഏകോപനം നിലനിർത്തുന്നതിനും ആവശ്യമായ സന്ദർഭങ്ങളിൽ മാത്രമേ ലൊക്കേഷൻ, കണക്റ്റിവിറ്റി വിവരങ്ങൾ ഉപയോഗിക്കുകയുള്ളൂ. ഇന്റർനെറ്റ് ലഭ്യമല്ലാത്തപ്പോൾ, അടുത്തുള്ള ഉപകരണങ്ങൾക്കിടയിൽ നിർണ്ണായക വിവരങ്ങൾ കൈമാറാൻ ഗാർഡിയൻനെറ്റ് ബ്ലൂടൂത്ത് അടിസ്ഥാനമാക്കിയുള്ള പിയർ-ടു-പിയർ ആശയവിനിമയം ഉപയോഗിച്ചേക്കാം. ഈ വിവരങ്ങൾ താൽക്കാലികമായി പങ്കിടുകയും കണക്റ്റിവിറ്റി പുനഃസ്ഥാപിക്കുമ്പോൾ മാത്രം സമന്വയിപ്പിക്കുകയും ചെയ്യുന്നു.",
-      content3: "എല്ലാ വിവരങ്ങളും അംഗീകൃത ദുരന്ത നിവാരണ അതോറിറ്റികളുമായും സജീവ പ്രതികരണ മേഖലകളിലെ പ്രസക്തമായ ഉദ്യോഗസ്ഥരുമായും മാത്രമേ പങ്കിടുകയുള്ളൂ. വിവരങ്ങൾ റോൾ അധിഷ്ഠിത ആക്സസ് നിയന്ത്രണങ്ങൾ ഉപയോഗിച്ച് സംരക്ഷിക്കപ്പെട്ടിരിക്കുന്നു, കൂടാതെ പ്രവർത്തനപരമോ സുരക്ഷാപരമോ ആയ ആവശ്യങ്ങൾക്ക് ആവശ്യമുള്ള കാലത്തോളം മാത്രമേ സൂക്ഷിക്കുകയുള്ളൂ. നിങ്ങൾക്ക് എപ്പോൾ വേണമെങ്കിലും നിങ്ങളുടെ വിവരങ്ങൾ പരിശോധിക്കാനോ തിരുത്താനോ നീക്കം ചെയ്യാൻ ആവശ്യപ്പെടാനോ കഴിയും.",
-      content4: "ഗാർഡിയൻനെറ്റ് തുടർന്നും ഉപയോഗിക്കുന്നതിലൂടെ, സുരക്ഷയ്ക്കും സുതാര്യതയ്ക്കും ഉത്തരവാദിത്തമുള്ള വിവര ഉപയോഗത്തിനും മുൻഗണന നൽകുന്ന ഈ സ്വകാര്യതാ നയം നിങ്ങൾ അംഗീകരിക്കുകയും സമ്മതിക്കുകയും ചെയ്യുന്നു.",
-      agree: "സമ്മതിക്കുന്നു, തുടർന്നുപോകുക"
     }
-  }
-};
+  };

@@ -21,20 +21,16 @@ export default function Home() {
   const [isLandslideTriggered, setIsLandslideTriggered] = useState(false);
   const [isVolunteerViewOpen, setIsVolunteerViewOpen] = useState(false);
   const [showVolunteerInfo, setShowVolunteerInfo] = useState(false);
-  const [showPrivacy, setShowPrivacy] = useState(true);
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
   const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
-    if (showPrivacy) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+    if (isLandslideTriggered) {
+      setShowNotification(true);
+      const timer = setTimeout(() => setShowNotification(false), 8000);
+      return () => clearTimeout(timer);
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [showPrivacy]);
+  }, [isLandslideTriggered]);
 
   const ZONES = [
     { 
@@ -426,47 +422,6 @@ export default function Home() {
         />
 
         <AnimatePresence>
-          {showPrivacy && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[200] flex items-center justify-center p-4"
-            >
-              <div className="absolute inset-0 bg-background/80 backdrop-blur-md" />
-              <motion.div 
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="relative w-full max-w-2xl bg-secondary border border-white/10 p-8 rounded-[2rem] shadow-2xl"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
-                    <Shield className="w-6 h-6" />
-                  </div>
-                  <h2 className="text-2xl font-bold tracking-tight">{t.privacy.title}</h2>
-                </div>
-                
-                <div className="space-y-4 text-foreground/70 text-sm leading-relaxed max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
-                  <p>{t.privacy.content1}</p>
-                  <p>{t.privacy.content2}</p>
-                  <p>{t.privacy.content3}</p>
-                  <p>{t.privacy.content4}</p>
-                </div>
-
-                <div className="mt-8">
-                  <button 
-                    onClick={() => setShowPrivacy(false)}
-                    className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold hover:shadow-lg hover:shadow-primary/20 transition-all"
-                  >
-                    {t.privacy.agree}
-                  </button>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence>
           {isVolunteerViewOpen && (
             <VolunteerView 
               onClose={() => setIsVolunteerViewOpen(false)} 
@@ -543,42 +498,42 @@ export default function Home() {
               </div>
               
               <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-16">
-                <div>
-                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.platform}</h4>
-                  <ul className="space-y-4 text-sm text-foreground/40">
-                    {t.footer.platformItems.map((item) => {
-                      let href = "#";
-                      let onClick = (e: React.MouseEvent) => e.preventDefault();
-                      
-                      if (item === t.footer.links.assetMapping) {
-                        href = "https://sdma.kerala.gov.in/hazard-maps/";
-                        onClick = (e) => {
-                          e.preventDefault();
-                          handleExternalLink(href);
-                        };
-                      } else if (item === t.footer.links.meshNetworking) {
-                        href = "https://meshrelay-9dtn549.public.builtwithrocket.new";
-                        onClick = (e) => {
-                          e.preventDefault();
-                          handleExternalLink(href);
-                        };
-                      }
+                  <div>
+                    <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.platform}</h4>
+                    <ul className="space-y-4 text-sm text-foreground/40">
+                      {t.footer.platformItems.map((item) => {
+                        let href = "#";
+                        let onClick = (e: React.MouseEvent) => e.preventDefault();
+                        
+                        if (item === t.footer.links.assetMapping) {
+                          href = "https://sdma.kerala.gov.in/hazard-maps/";
+                          onClick = (e) => {
+                            e.preventDefault();
+                            handleExternalLink(href);
+                          };
+                        } else if (item === t.footer.links.meshNetworking) {
+                          href = "https://meshrelay-9dtn549.public.builtwithrocket.new";
+                          onClick = (e) => {
+                            e.preventDefault();
+                            handleExternalLink(href);
+                          };
+                        }
 
-                      return (
-                        <li key={item}>
-                          <a 
-                            href={href} 
-                            onClick={onClick}
-                            className="hover:text-primary transition-colors flex items-center gap-2"
-                          >
-                            {item}
-                            {href !== "#" && <ExternalLink className="w-3 h-3" />}
-                          </a>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
+                        return (
+                          <li key={item}>
+                            <a 
+                              href={href} 
+                              onClick={onClick}
+                              className="hover:text-primary transition-colors flex items-center gap-2"
+                            >
+                              {item}
+                              {href !== "#" && <ExternalLink className="w-3 h-3" />}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 <div>
                   <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.regions}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
@@ -634,36 +589,6 @@ export default function Home() {
                         className="hover:text-primary transition-colors text-left block flex items-center gap-2"
                       >
                         {t.footer.links.landslideData}
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </li>
-                    <li>
-                      <a 
-                        href="https://meshrelay-9dtn549.public.builtwithrocket.new"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleExternalLink("https://meshrelay-9dtn549.public.builtwithrocket.new");
-                        }}
-                        className="hover:text-primary transition-colors text-left block flex items-center gap-2"
-                      >
-                        {t.footer.links.meshNetworking}
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </li>
-                    <li>
-                      <a 
-                        href="https://sdma.kerala.gov.in/hazard-maps/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleExternalLink("https://sdma.kerala.gov.in/hazard-maps/");
-                        }}
-                        className="hover:text-primary transition-colors text-left block flex items-center gap-2"
-                      >
-                        {t.footer.links.assetMapping}
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     </li>
