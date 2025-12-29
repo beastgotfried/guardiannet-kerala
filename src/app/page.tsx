@@ -8,7 +8,7 @@ import { KSDMADashboard } from "@/components/guardian/KSDMADashboard";
 import { AIAssistant } from "@/components/guardian/AIAssistant";
 import { VerificationPortal } from "@/components/guardian/VerificationPortal";
 import { VolunteerView } from "@/components/guardian/VolunteerView";
-import { Shield, Menu, Github, ExternalLink, X, Users, Briefcase, Zap, Globe, AlertTriangle, Lock, CheckCircle2 } from "lucide-react";
+import { Shield, Menu, Github, ExternalLink, X, Users, Briefcase, Zap, Globe, AlertTriangle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/hooks/use-language";
@@ -23,7 +23,6 @@ export default function Home() {
   const [showVolunteerInfo, setShowVolunteerInfo] = useState(false);
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
   const [showNotification, setShowNotification] = useState(false);
-  const [showPrivacyNotice, setShowPrivacyNotice] = useState(true);
 
   useEffect(() => {
     if (isLandslideTriggered) {
@@ -110,83 +109,12 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isIndic = language === 'ml' || language === 'hi';
-
   return (
     <>
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
       <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <div className="noise-overlay" />
         
-        <AnimatePresence>
-          {showPrivacyNotice && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
-            >
-              <motion.div 
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="max-w-2xl w-full bg-[#0a0a0a] border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl"
-              >
-                <div className="p-8 md:p-12">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
-                      <Lock className="w-8 h-8" />
-                    </div>
-                    <div>
-                      <h2 className="text-3xl font-black italic tracking-tight">PRIVACY NOTICE</h2>
-                      <p className="text-foreground/40 font-mono text-sm uppercase">GuardianNet Security Protocol</p>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-6 text-foreground/70 text-sm leading-relaxed max-h-[40vh] overflow-y-auto pr-4 custom-scrollbar">
-                    <p>
-                      GuardianNet is a localized disaster response tool. By continuing, you acknowledge that during a 
-                      landslide event, your device may be used as a <span className="text-primary font-bold italic">Peer-to-Peer Mesh Node</span>.
-                    </p>
-                    <div className="p-6 bg-white/5 rounded-2xl border border-white/5 space-y-4">
-                      <div className="flex gap-4">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0" />
-                        <p><span className="text-white font-bold">Data Sovereignty:</span> Your location is only broadcast during active RED ALERTS. Data is purged 72 hours post-event.</p>
-                      </div>
-                      <div className="flex gap-4">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0" />
-                        <p><span className="text-white font-bold">Volunteer Verification:</span> All field agents undergo KSDMA credential checks before receiving sensitive deployment data.</p>
-                      </div>
-                      <div className="flex gap-4">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0" />
-                        <p><span className="text-white font-bold">Offline Resilience:</span> Our BLE Mesh system works without internet. Communications are encrypted via hardware-level secure elements.</p>
-                      </div>
-                    </div>
-                    <p className="italic text-xs text-foreground/40">
-                      Standard data charges may apply for satellite-relay connections. GuardianNet does not share personal 
-                      identifiers with third-party commercial entities.
-                    </p>
-                  </div>
-
-                  <div className="mt-12 flex flex-col sm:flex-row gap-4">
-                    <button 
-                      onClick={() => setShowPrivacyNotice(false)}
-                      className="flex-1 px-8 py-4 rounded-2xl bg-primary text-primary-foreground font-black text-sm uppercase tracking-widest hover:shadow-[0_0_30px_rgba(var(--primary),0.3)] transition-all"
-                    >
-                      Agree and Continue
-                    </button>
-                    <button 
-                      onClick={() => handleExternalLink("https://sdma.kerala.gov.in/privacy-policy/")}
-                      className="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 font-bold text-sm text-foreground/60 hover:text-foreground transition-all"
-                    >
-                      Legal Terms
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         <motion.nav 
           initial={{ y: -100 }}
           animate={{ y: 0 }}
@@ -222,13 +150,13 @@ export default function Home() {
                 { name: t.nav.technology, id: "technology" },
                 { name: t.nav.ksdma, id: "ksdma" },
                 { name: t.nav.instructions, id: "protocols" },
-                { name: t.nav.keralaContext, id: "dashboard" },
-                { name: t.nav.about, id: "footer" }
+                { name: t.nav.keralaContext, id: "#" },
+                { name: t.nav.about, id: "#" }
               ].map((item) => (
                 <motion.a 
                   key={item.name}
                   href={`#${item.id}`}
-                  onClick={(e) => scrollToSection(e, item.id)}
+                  onClick={(e) => item.id !== "#" && scrollToSection(e, item.id)}
                   className="px-4 py-2 rounded-lg text-sm font-medium text-foreground/60 hover:text-foreground hover:bg-white/5 transition-all"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -292,15 +220,17 @@ export default function Home() {
                     { name: t.nav.technology, id: "technology" },
                     { name: t.nav.ksdma, id: "ksdma" },
                     { name: t.nav.instructions, id: "protocols" },
-                    { name: t.nav.keralaContext, id: "dashboard" },
-                    { name: t.nav.about, id: "footer" }
+                    { name: t.nav.keralaContext, id: "#" },
+                    { name: t.nav.about, id: "#" }
                   ].map((item) => (
                     <a 
                       key={item.name}
                       href={`#${item.id}`} 
                       onClick={(e) => {
-                        scrollToSection(e, item.id);
-                        setMobileMenuOpen(false);
+                        if (item.id !== "#") {
+                          scrollToSection(e, item.id);
+                          setMobileMenuOpen(false);
+                        }
                       }}
                       className="block px-4 py-3 rounded-xl text-sm font-medium text-foreground/60 hover:text-foreground hover:bg-white/5 transition-all"
                     >
@@ -546,7 +476,7 @@ export default function Home() {
           )}
         </AnimatePresence>
 
-        <footer id="footer" className="py-24 border-t border-white/5 bg-gradient-to-t from-secondary/20 to-transparent relative overflow-hidden">
+        <footer className="py-24 border-t border-white/5 bg-gradient-to-t from-secondary/20 to-transparent relative overflow-hidden">
           <div className="absolute inset-0 topographic-bg opacity-20" />
           <div className="container mx-auto px-4 relative z-10">
             <div className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-20">
@@ -571,41 +501,17 @@ export default function Home() {
               
               <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-16">
                 <div>
-                  <h4 className={`font-bold mb-6 text-sm text-foreground/60 ${isIndic ? "" : "uppercase tracking-widest"}`}>
-                    {t.footer.platform}
-                  </h4>
+                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.platform}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
-                    {t.footer.platformItems.map((item: any) => (
-                      <li key={item.name}>
-                        {item.href.startsWith("http") ? (
-                          <a 
-                            href={item.href}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              handleExternalLink(item.href);
-                            }}
-                            className="hover:text-primary transition-colors flex items-center gap-2"
-                          >
-                            {item.name}
-                            <ExternalLink className="w-3 h-3" />
-                          </a>
-                        ) : (
-                          <a 
-                            href={item.href} 
-                            onClick={(e) => scrollToSection(e, item.href.replace("#", ""))}
-                            className="hover:text-primary transition-colors"
-                          >
-                            {item.name}
-                          </a>
-                        )}
+                    {t.footer.platformItems.map((item) => (
+                      <li key={item}>
+                        <a href="#" className="hover:text-primary transition-colors">{item}</a>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h4 className={`font-bold mb-6 text-sm text-foreground/60 ${isIndic ? "" : "uppercase tracking-widest"}`}>
-                    {t.footer.regions}
-                  </h4>
+                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.regions}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
                     {t.footer.regionItems.map((item) => (
                       <li key={item}>
@@ -615,13 +521,13 @@ export default function Home() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className={`font-bold mb-6 text-sm text-foreground/60 ${isIndic ? "" : "uppercase tracking-widest"}`}>
-                    {t.footer.resources}
-                  </h4>
+                  <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-foreground/60">{t.footer.resources}</h4>
                   <ul className="space-y-4 text-sm text-foreground/40">
                     <li>
                       <a 
                         href="https://timesofindia.indiatimes.com/topic/wayanad-floods"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={(e) => {
                           e.preventDefault();
                           handleExternalLink("https://timesofindia.indiatimes.com/topic/wayanad-floods");
@@ -634,7 +540,18 @@ export default function Home() {
                     </li>
                     <li>
                       <a 
+                        href="#"
+                        onClick={(e) => e.preventDefault()}
+                        className="hover:text-primary transition-colors text-left block flex items-center gap-2 cursor-not-allowed opacity-50"
+                      >
+                        {t.footer.links.apiAccess}
+                      </a>
+                    </li>
+                    <li>
+                      <a 
                         href="https://sdma.kerala.gov.in/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={(e) => {
                           e.preventDefault();
                           handleExternalLink("https://sdma.kerala.gov.in/");
@@ -648,6 +565,8 @@ export default function Home() {
                     <li>
                       <a 
                         href="https://sdma.kerala.gov.in/emergency-contacts/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={(e) => {
                           e.preventDefault();
                           handleExternalLink("https://sdma.kerala.gov.in/emergency-contacts/");
@@ -655,32 +574,6 @@ export default function Home() {
                         className="hover:text-primary transition-colors text-left block flex items-center gap-2"
                       >
                         {t.footer.links.emergencyContacts}
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </li>
-                    <li>
-                      <a 
-                        href="https://digitalsky.dgca.gov.in/"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleExternalLink("https://digitalsky.dgca.gov.in/");
-                        }}
-                        className="hover:text-primary transition-colors text-left block flex items-center gap-2"
-                      >
-                        DGCA Drone Norms
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </li>
-                    <li>
-                      <a 
-                        href="https://landslides.gsiti.res.in/"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleExternalLink("https://landslides.gsiti.res.in/");
-                        }}
-                        className="hover:text-primary transition-colors text-left block flex items-center gap-2"
-                      >
-                        Landslide Data
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     </li>
@@ -692,7 +585,7 @@ export default function Home() {
             <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex items-center gap-6 text-xs text-foreground/30">
                 <span>© 2025 GuardianNet</span>
-                <a href="#" onClick={(e) => { e.preventDefault(); setShowPrivacyNotice(true); }} className="hover:text-foreground/60 transition-colors">Privacy</a>
+                <a href="#" className="hover:text-foreground/60 transition-colors">Privacy</a>
                 <a href="#" className="hover:text-foreground/60 transition-colors">Terms</a>
               </div>
               <div className="flex items-center gap-4">
@@ -712,4 +605,3 @@ export default function Home() {
     </>
   );
 }
-

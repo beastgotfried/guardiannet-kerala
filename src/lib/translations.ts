@@ -6,9 +6,9 @@ export const translations = {
       technology: "Technology",
       ksdma: "KSDMA",
       keralaContext: "Kerala Context",
-      about: "About",
-      instructions: "Instructions",
-      volunteer: "Volunteer",
+        about: "About",
+        instructions: "Instructions",
+        volunteer: "Volunteer",
       volunteerNow: "Volunteer Now"
     },
     hero: {
@@ -46,14 +46,14 @@ export const translations = {
         show: "View Tactical Briefing",
         hide: "Hide Tactical Briefing"
       },
-      interface: "OPEN VOLUNTEER INTERFACE",
-      exit: "EXIT INTERFACE",
-      noConnection: {
-        title: "No connection?",
-        server1: "Server 1",
-        server2: "Server 2"
-      },
-      mission: {
+        interface: "OPEN VOLUNTEER INTERFACE",
+        exit: "EXIT INTERFACE",
+        noConnection: {
+          title: "No connection?",
+          server1: "Server 1",
+          server2: "Server 2"
+        },
+        mission: {
         accepted: "Mission Accepted",
         target: "Target Location",
         distance: "Distance to Target",
@@ -64,12 +64,7 @@ export const translations = {
       platform: "Platform",
       regions: "Regions",
       resources: "Resources",
-      platformItems: [
-        { name: "Asset Mapping", href: "#technology" },
-        { name: "Mesh Networking", href: "https://web-ble-mesh-chat.vercel.app/" },
-        { name: "Skill Verification", href: "#" },
-        { name: "Camp Management", href: "#" }
-      ],
+      platformItems: ["Asset Mapping", "Mesh Networking", "Skill Verification", "Camp Management"],
       regionItems: ["Wayanad", "Idukki", "Palakkad", "Kozhikode", "Malappuram"],
       links: {
         documentation: "Documentation",
@@ -84,9 +79,9 @@ export const translations = {
       technology: "तकनीक",
       ksdma: "KSDMA",
       keralaContext: "केरल संदर्भ",
-      about: "हमारे बारे में",
-      instructions: "निर्देश",
-      volunteer: "स्वयंसेवक",
+        about: "हमारे बारे में",
+        instructions: "निर्देश",
+        volunteer: "स्वयंसेवक",
       volunteerNow: "अभी स्वयंसेवक बनें"
     },
     hero: {
@@ -101,7 +96,7 @@ export const translations = {
         districts: "कवर किए गए जिले",
         uptime: "नेटवर्क अपटाइम"
       },
-      scroll: "अन्വേषण के लिए स्क्रॉल करें"
+      scroll: "अन्वेषण के लिए स्क्रॉल करें"
     },
     dashboard: {
       title: "KSDMA नियंत्रण केंद्र",
@@ -125,13 +120,13 @@ export const translations = {
         hide: "सामरिक ब्रीफिंग छिपाएं"
       },
       interface: "स्वयंसेवक इंटरफ़ेस खोलें",
-      exit: "इंटरफ़ेस से बाहर निकलें",
-      noConnection: {
-        title: "कोई कनेक्शन नहीं?",
-        server1: "सर्वर 1",
-        server2: "सर्वर 2"
-      },
-      mission: {
+        exit: "इंटरफ़ेस से बाहर निकलें",
+        noConnection: {
+          title: "कोई कनेक्शन नहीं?",
+          server1: "सर्वर 1",
+          server2: "सर्वर 2"
+        },
+        mission: {
         accepted: "मिशन स्वीकार किया गया",
         target: "लक्ष्य स्थान",
         distance: "लक्ष्य से दूरी",
@@ -142,12 +137,7 @@ export const translations = {
       platform: "प्लेटफार्म",
       regions: "क्षेत्र",
       resources: "संसाधन",
-      platformItems: [
-        { name: "एसेट मैपिंग", href: "#technology" },
-        { name: "मेश नेटवर्किंग", href: "https://web-ble-mesh-chat.vercel.app/" },
-        { name: "कौशल सत्यापन", href: "#" },
-        { name: "शिविर प्रबंधन", href: "#" }
-      ],
+      platformItems: ["एसेट मैपिंग", "मेश नेटवर्किंग", "कौशल सत्यापन", "शिविर प्रबंधन"],
       regionItems: ["वायनाड", "इडुक्की", "पालक्कड़", "कोझिकोड", "मलप्पुरम"],
       links: {
         documentation: "दस्तावेज़",
@@ -162,9 +152,9 @@ export const translations = {
       technology: "സാങ്കേതികവിദ്യ",
       ksdma: "കെ.എസ്.ഡി.എം.എ",
       keralaContext: "കേരള സാഹചര്യം",
-      about: "ഞങ്ങളെക്കുറിച്ച്",
-      instructions: "നിർദ്ദേശങ്ങൾ",
-      volunteer: "സന്നദ്ധപ്രവർത്തകർ",
+        about: "ഞങ്ങളെക്കുറിച്ച്",
+        instructions: "നിർദ്ദേശങ്ങൾ",
+        volunteer: "സന്നദ്ധപ്രവർത്തകർ",
       volunteerNow: "സന്നദ്ധപ്രവർത്തകനാകൂ"
     },
     hero: {
@@ -203,13 +193,13 @@ export const translations = {
         hide: "വിവരങ്ങൾ മറയ്ക്കുക"
       },
       interface: "വോളന്റിയർ ഇന്റർഫേസ്",
-      exit: "പുറത്തുകടക്കുക",
-      noConnection: {
-        title: "കണക്ഷൻ ഇല്ലേ?",
-        server1: "സെർവർ 1",
-        server2: "സെർവർ 2"
-      },
-      mission: {
+        exit: "പുറത്തുകടക്കുക",
+        noConnection: {
+          title: "കണക്ഷൻ ഇല്ലേ?",
+          server1: "സെർവർ 1",
+          server2: "സെർവർ 2"
+        },
+        mission: {
         accepted: "ദൗത്യം സ്വീകരിച്ചു",
         target: "ലക്ഷ്യസ്ഥാനം",
         distance: "ദൂരം",
@@ -220,12 +210,7 @@ export const translations = {
       platform: "പ്ലാറ്റ്‌ഫോം",
       regions: "മേഖലകൾ",
       resources: "വിഭവങ്ങൾ",
-      platformItems: [
-        { name: "അസറ്റ് മാപ്പിംഗ്", href: "#technology" },
-        { name: "മെഷ് നെറ്റ്‌വർക്കിംഗ്", href: "https://web-ble-mesh-chat.vercel.app/" },
-        { name: "നൈപുണ്യ പരിശോധന", href: "#" },
-        { name: "ക്യാമ്പ് മാനേജ്‌മെന്റ്", href: "#" }
-      ],
+      platformItems: ["അസറ്റ് മാപ്പിംഗ്", "മെഷ് നെറ്റ്‌വർക്കിംഗ്", "നൈപുണ്യ പരിശോധന", "ക്യാമ്പ് മാനേജ്‌മെന്റ്"],
       regionItems: ["വയനാട്", "ഇടുക്കി", "പാലക്കാട്", "കോഴിക്കോട്", "മലപ്പുറം"],
       links: {
         documentation: "ഡോക്യുമെന്റേഷൻ",
